@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import RiskLevels from './risk-levels';
 import DoughnutChart from './charts/doughnut-chart';
-import RegularText from './text/regular-text';
+import StyledText from './text/styled-text';
 
 class HomePage extends React.Component {
   render() {
@@ -17,7 +17,7 @@ class HomePage extends React.Component {
           </Text>
         </View>
         <View style={viewStyles.headerContainer}>
-          <RegularText  
+          <StyledText  
             text="Compare your investment portfolio with a ideal investment portfolio for risk levels
               between 1-10"
           />

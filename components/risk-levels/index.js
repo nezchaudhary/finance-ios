@@ -1,37 +1,71 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import RiskLevelsSlider from './risk-level-slider';
-import BoldText from '../text/bold-text';
-import RegularText from '../text/regular-text';
+
+import AppSlider from '../slider/';
+import StyledText from '../text/styled-text';
+import { sliderStyles } from '../../constants/styles';
+import { updateRiskLevel } from '../../actions/update-risk-level';
 
 class RiskLevels extends React.Component {
+
+  componentWillMount() {
+    this.props.updateRiskLevel(1);
+  }
 
   render() {
     return (
       <View>
         <View style={viewStyles.mainContainer}>
           <View style={viewStyles.riskType}>
-            <BoldText text={'1'} />
-            <RegularText text={'Low'} />
+            <StyledText stye={{ fontWeight: 'bold' }} text={'1'} />
+            <StyledText text={'Low'} />
           </View>
           <View style={viewStyles.sliderContainer}>
-            <RiskLevelsSlider />
+            <AppSlider 
+              minimumValue={1}
+              maximumValue={10}
+              step={1}
+              minimumTrackTintColor={sliderStyles.minTrackColor}
+              maximumTrackTintColor={sliderStyles.maxTrackColor}
+              thumbTintColor={sliderStyles.thumbColor}
+              trackStyle={trackStyle}
+              thumbStyle={thumbStyle}
+              value={this.props.riskLevel} 
+              onValueChange={this.props.updateRiskLevel} 
+            />
           </View>
           <View style={viewStyles.riskType}>
-            <BoldText text={'10'} />
-            <RegularText text={'High'} />
+            <StyledText 
+              stye={{ fontWeight: 'bold'}} 
+              text={'10'} />
+            <StyledText text={'High'} />
           </View>
         </View>
         <View style={viewStyles.riskLevelIndicator}>
-          <BoldText
-            text={`Risk Level: ${this.props.riskLevel || '1'}`}
+          <StyledText
+            style={{ fontWeight: 'bold' }}
+            text={`Risk Level: ${this.props.riskLevel}`}
           />
         </View>
       </View>
     );
   }
+}
+
+const trackStyle = {
+  height: 8,
+  borderRadius: 5,
+  backgroundColor: '#d0d0d0',
+};
+
+const thumbStyle = {
+  width: 10,
+  height: 20,
+  borderRadius: 5,
+  backgroundColor: '#5195cc',
 }
 
 const viewStyles = StyleSheet.create({
@@ -62,4 +96,5 @@ const viewStyles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({ riskLevel: state.riskLevel });
-export default connect(mapStateToProps)(RiskLevels);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ updateRiskLevel }, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(RiskLevels);

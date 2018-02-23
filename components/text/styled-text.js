@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet } from 'react-native';
-import { fontColor } from '../../styles/main';
+import { fontColor, fontFamily } from '../../constants/styles';
  
 class RegularText extends Component {
   render() {
     return (
-      <Text style={style.text}>
+      <Text style={[style.text, this.props.style]}>
       {this.props.text}</Text>
     )
   }
@@ -13,7 +13,8 @@ class RegularText extends Component {
 
 const style = StyleSheet.create({
   text: {
-    color: fontColor
+    color: fontColor,
+    fontFamily
   }
 });
 

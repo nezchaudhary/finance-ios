@@ -3,11 +3,12 @@ import { StyleSheet, View, Text, ScrollView, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import PieChart from 'react-native-pie-chart';
 
-import BoldText from '../../text/bold-text';
+import StyledText from '../../text/styled-text';
 import RiskLevelPortfolios from '../../../mock-data/risk-level-portfolios';
 
 class DoughnutChart extends Component {
   getData() {
+    console.log('chart mein risk level', this.props.riskLevel);
     if (this.props.riskLevel) {
       const p = RiskLevelPortfolios[this.props.riskLevel];
       const values = Object.values(p);
@@ -32,7 +33,7 @@ class DoughnutChart extends Component {
             <StatusBar
               hidden={true}
             />
-            <BoldText text="Basic Doughnut">Basic</BoldText>
+            <StyledText style={{ fontWeight: 'bold' }} text="Basic Doughnut">Basic</StyledText>
             <PieChart
               chart_wh={200}
               series={d.data}
