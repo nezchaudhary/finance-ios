@@ -4,30 +4,47 @@ import { connect } from 'react-redux';
 import PieChart from 'react-native-pie-chart';
 
 import StyledText from '../../text/styled-text';
+import DoughnutLegend from './doughnut-legend';
 import RiskLevelPortfolios from '../../../mock-data/risk-level-portfolios';
+import { generateChartData, generateChartDataObject, getHeader } from './doughnut-chart-data';
 
 class DoughnutChart extends Component {
+
+  collectData() {
+    // const total = this.props.userPortfolio ? getPortfolioSize(this.props.userPortfolio) : 0;
+    const riskLevel = this.props.selectedLevel;
+    // const userPortfolio = this.props.userPortfolio;
+    // const userPortfolioValues = this.props.userPortfolio ? Object.values(this.props.userPortfolio) : null;
+    const type = this.props.type;
+    const investments = this.props.investmentTypes;
+    // return { total, riskLevel, userPortfolio, userPortfolioValues, type, investments };
+    return { type, investments };
+  }
+
   getData() {
     console.log('chart mein risk level', this.props.riskLevel);
     if (this.props.riskLevel) {
       const p = RiskLevelPortfolios[this.props.riskLevel];
-      const values = Object.values(p);
+      const percentages = Object.values(p);
+      let label;
       return this.props.investmentTypes.reduce((result, type, i) => {
-        if (values[i] > 0) {
-          result.data.push(values[i]);
+        // label = portfolio ? `${type.name} - $${formatDollarString(portfolio[index])} (${percentages[index]}%)`
+        if (percentages[i] > 0) {
+          label = `${type.name} (${percentages[i]}%)`;
+          result.data.push(percentages[i]);
           result.colors.push(type.color);
+          result.labels.push(label);
         }
         return result;
-      }, {data: [], colors:[]});
+      }, {data: [], colors:[], labels: []});
     }
     return null;
   }
 
   render() {
+    const data = this.collectData();
     const d = this.getData();
-    if (d) {
       return (
-  
         <ScrollView style={{ flex: 1 }}>
           <View>
             <StatusBar
@@ -43,10 +60,9 @@ class DoughnutChart extends Component {
               coverFill={'#FFF'}
             />
           </View>
+          <DoughnutLegend data={d}/>
         </ScrollView>
       );
-    }
-    return null;
   }
 }
 
