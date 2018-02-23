@@ -7,6 +7,7 @@ import StyledText from '../../text/styled-text';
 import DoughnutLegend from './doughnut-legend';
 import RiskLevelPortfolios from '../../../mock-data/risk-level-portfolios';
 import { generateChartData, generateChartDataObject, getHeader } from './doughnut-chart-data';
+import { getWidthSizeForScreen } from '../../../constants/layout';
 
 class DoughnutChart extends Component {
 
@@ -22,7 +23,6 @@ class DoughnutChart extends Component {
   }
 
   getData() {
-    console.log('chart mein risk level', this.props.riskLevel);
     if (this.props.riskLevel) {
       const p = RiskLevelPortfolios[this.props.riskLevel];
       const percentages = Object.values(p);
@@ -52,7 +52,7 @@ class DoughnutChart extends Component {
             />
             <StyledText style={{ fontWeight: 'bold' }} text="Basic Doughnut">Basic</StyledText>
             <PieChart
-              chart_wh={200}
+              chart_wh={getWidthSizeForScreen(175, 200, 250)}
               series={d.data}
               sliceColor={d.colors}
               doughnut={true}

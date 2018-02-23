@@ -8,6 +8,7 @@ import AppSlider from '../slider/';
 import StyledText from '../text/styled-text';
 import { sliderStyles } from '../../constants/styles';
 import { updateRiskLevel } from '../../actions/update-risk-level';
+import { getWidthSizeForScreen } from '../../constants/layout';
 
 class RiskLevels extends React.Component {
 
@@ -76,7 +77,7 @@ const viewStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 400
+    width: getWidthSizeForScreen(300, 350, 400)
   },
   riskType: { // views for number 1 and 10
     flex: 1,

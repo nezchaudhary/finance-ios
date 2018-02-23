@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import RiskLevels from './risk-levels';
 import DoughnutChart from './charts/doughnut-chart';
 import StyledText from './text/styled-text';
+import { window } from '../constants/layout';
 
 class HomePage extends React.Component {
   render() {
