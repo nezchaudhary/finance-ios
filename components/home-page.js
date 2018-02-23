@@ -4,10 +4,33 @@ import { connect } from 'react-redux';
 
 import RiskLevels from './risk-levels';
 import DoughnutChart from './charts/doughnut-chart';
+import StyledButton from './button';
 import StyledText from './text/styled-text';
 import { window } from '../constants/layout';
 
 class HomePage extends React.Component {
+  renderButton() {
+    if (!this.props.userPortfolio) {
+      return (
+        <View style={viewStyles.buttonContainer}>
+            <StyledButton 
+              title='Compare Your Portfolio' 
+              onPress={() => alert('Yes!')}
+              style={{ fontSize: 12 }} />
+        </View>
+      );
+    }
+  }
+
+  renderUserChart() {
+    return null;
+    // return (
+    //   <View style={viewStyles.chartsContainer}>
+    //     <Text>Charts go here</Text>
+    //   </View>
+    // );
+  }
+
   render() {
     return (
       <View style={viewStyles.mainContainer}>
@@ -28,7 +51,9 @@ class HomePage extends React.Component {
         </View>
         <View style={viewStyles.chartsContainer}>
           <DoughnutChart />
-        </View>
+          </View>
+          {this.renderButton()}
+          {this.renderUserChart()}
       </View>
       
     );
@@ -52,7 +77,10 @@ const viewStyles = StyleSheet.create({
     flex: 1
   },
   chartsContainer: { // charts container
-    flex: 8
+    flex: 4
+  },
+  buttonContainer: {
+    flex: 1,
   }
 });
 
