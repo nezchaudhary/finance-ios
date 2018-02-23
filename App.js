@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
 import reducers from './reducers';
-import MainPage from './test';
+import HomePage from './components/home-page';
 
 const store = createStore(reducers);
 
@@ -15,8 +15,7 @@ export default class App extends React.Component {
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
-          <Text> Still working </Text>
-          <MainPage />
+          <HomePage />
         </View>
       </Provider>
     );
@@ -29,5 +28,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  statusBarUnderlay: {
+    height: 24,
+    backgroundColor: 'rgba(0,0,0,0.2)',
   },
 });
