@@ -14,7 +14,7 @@ class UserPortfolioForm extends Component {
     this.state = {}
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.investmentTypes.map(type => {
       this.state[type.name] = '$';
     });

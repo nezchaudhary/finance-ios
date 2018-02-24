@@ -6,10 +6,22 @@ import RiskLevels from './risk-levels';
 import DoughnutChart from './charts/doughnut-chart';
 import UserPortfolio from './user-portfolio';
 import StyledText from './text/styled-text';
+import PortfolioChangeInfo from './portfolio-change-info';
 
 class HomePage extends Component {
   getRiskChartType() {
     return this.props.userPortfolioTotal ? 'user-risk-portfolio' : 'risk-portfolio';
+  }
+
+  renderPortfolioChangeData() {
+    if (this.props.userPortfolioTotal) {
+      return (
+        <View style={viewStyles.portfolioChangeContainer}>
+          <PortfolioChangeInfo />
+        </View>
+      )
+    }
+    return null;
   }
 
   render() {
@@ -34,12 +46,12 @@ class HomePage extends Component {
           <View style={viewStyles.riskChartContainer}>
             <DoughnutChart type={this.getRiskChartType()}/>
           </View>
-            <View style={viewStyles.userPortfolioContainer}>
-              <UserPortfolio />
-            </View>
+          <View style={viewStyles.userPortfolioContainer}>
+            <UserPortfolio />
+          </View>
+          {this.renderPortfolioChangeData()}
         </View>
-      </ScrollView>
-      
+      </ScrollView> 
     );
   }
 }
@@ -65,6 +77,9 @@ const viewStyles = StyleSheet.create({
   },
   userPortfolioContainer: {
     flex: 1,
+  },
+  portfolioChangeContainer: {
+    flex: 1
   }
 });
 
