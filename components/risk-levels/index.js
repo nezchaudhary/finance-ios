@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-
 import AppSlider from '../slider/';
 import StyledText from '../text/styled-text';
 import { sliderStyles } from '../../constants/styles';

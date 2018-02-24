@@ -1,43 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 import RiskLevels from './risk-levels';
 import DoughnutChart from './charts/doughnut-chart';
-import StyledButton from './button';
+// import StyledButton from './button';
+import UserPortfolio from './user-portfolio';
 import StyledText from './text/styled-text';
-import { window } from '../constants/layout';
+import AppForm from './form';
 
 class HomePage extends React.Component {
-  renderButton() {
-    if (!this.props.userPortfolio) {
-      return (
-        <View style={viewStyles.buttonContainer}>
-            <StyledButton 
-              title='Compare Your Portfolio' 
-              onPress={() => alert('Yes!')}
-              style={{ fontSize: 12 }} />
-        </View>
-      );
-    }
-  }
-
-  renderUserChart() {
-    return null;
-    // return (
-    //   <View style={viewStyles.chartsContainer}>
-    //     <Text>Charts go here</Text>
-    //   </View>
-    // );
-  }
-
   render() {
     return (
       <View style={viewStyles.mainContainer}>
         <View style={viewStyles.logoContainer}>
           <Text style={textStyles.logo}>
-            <Text style={textStyles.investiLogo}>Investi</Text>
-            <Text style={textStyles.meLogo}>Me</Text>
+            <StyledText style={textStyles.investiLogo} title='Investi' />
+            <StyledText style={textStyles.meLogo} title='Me' />
           </Text>
         </View>
         <View style={viewStyles.headerContainer}>
@@ -49,11 +28,12 @@ class HomePage extends React.Component {
         <View style={viewStyles.riskLevelsContainer}>
           <RiskLevels />
         </View>
-        <View style={viewStyles.chartsContainer}>
+        <View style={viewStyles.riskChartContainer}>
           <DoughnutChart />
+        </View>
+          <View style={viewStyles.userPortfolioContainer}>
+            <UserPortfolio />
           </View>
-          {this.renderButton()}
-          {this.renderUserChart()}
       </View>
       
     );
@@ -76,10 +56,10 @@ const viewStyles = StyleSheet.create({
   riskLevelsContainer: { // slider container
     flex: 1
   },
-  chartsContainer: { // charts container
+  riskChartContainer: { // charts container
     flex: 4
   },
-  buttonContainer: {
+  userPortfolioContainer: {
     flex: 1,
   }
 });
@@ -96,5 +76,9 @@ const textStyles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => ({ types: state.investmentTypes });
-export default connect(mapStateToProps)(HomePage);
+// const mapStateToProps = (state) => {
+//   const { investmentTypes, userPortfolioTotal } = state;
+//   return { investmentTypes, userPortfolioTotal };
+// };
+// export default connect(mapStateToProps)(HomePage);
+export default HomePage;
