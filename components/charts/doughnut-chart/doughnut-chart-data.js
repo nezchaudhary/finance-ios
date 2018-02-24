@@ -2,16 +2,6 @@ import RiskLevelPortfolios from '../../../mock-data/risk-level-portfolios';
 import { calculateHowToMoveInvestments } from '../../../calculate-portfolio-shift';
 import formatDollarString from '../../../utility/format-dollar-string.js';
 
-const generateChartDataObject = (data) => {
-  return {
-    datasets: [{
-      data: data.values,
-      backgroundColor: data.colors
-    }],
-    labels: data.labels
-  };
-}
-
 const createChartDataSet = (investments, percentages, portfolio) => {
   let label;
   return investments.reduce((data, type, index) => {
@@ -30,7 +20,6 @@ const generateChartData = (data) => {
   const { riskLevel, userPortfolio, userPortfolioValues, total, type, investments } = data;
   const riskValues = Object.values(RiskLevelPortfolios[riskLevel]);
   const riskPortfolio = RiskLevelPortfolios[riskLevel];
-  // console.log('in generate chart', data);
   let chartData;
   if (type === 'risk-portfolio') {
     chartData = createChartDataSet(investments, riskValues);
@@ -74,7 +63,6 @@ const getHeader = (type, level, total) => {
 
 export {
   generateChartData,
-  generateChartDataObject,
   createChartDataSet,
   getHeader
 }

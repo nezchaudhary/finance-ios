@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import StyledButton from '../button';
+import StyledText from '../text/styled-text';
 import { updateUserPortfolio } from '../../actions/update-user-portfolio';
 import { updateUserPortfolioTotal } from '../../actions/update-user-portfolio-total';
-import StyledText from '../text/styled-text';
 
 class UserPortfolioForm extends Component {
   constructor() {
@@ -35,7 +35,6 @@ class UserPortfolioForm extends Component {
       payload[type] = amount > 0 ? amount : 0;
     }
 
-    console.log('payload is', payload);
     this.props.updateUserPortfolio(payload);
     this.props.updateUserPortfolioTotal(total);
     this.props.submit();
@@ -43,7 +42,6 @@ class UserPortfolioForm extends Component {
 
   createInputFields() {
     return this.props.investmentTypes.map(field => {
-      
       return (
         <View key={field.name}>
           <StyledText 

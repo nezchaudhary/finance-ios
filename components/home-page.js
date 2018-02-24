@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -7,7 +7,7 @@ import DoughnutChart from './charts/doughnut-chart';
 import UserPortfolio from './user-portfolio';
 import StyledText from './text/styled-text';
 
-class HomePage extends React.Component {
+class HomePage extends Component {
   getRiskChartType() {
     return this.props.userPortfolioTotal ? 'user-risk-portfolio' : 'risk-portfolio';
   }
@@ -85,4 +85,3 @@ const mapStateToProps = (state) => {
   return { userPortfolioTotal };
 };
 export default connect(mapStateToProps)(HomePage);
-// export default HomePage;

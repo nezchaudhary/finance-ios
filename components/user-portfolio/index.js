@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import StyledButton from '../button';
 import StyledText from '../text/styled-text';
-// import AppForm from '../form';
 import DoughnutChart from '../charts/doughnut-chart'
 import UserPortfolioForm from './user-portfolio-form';
-
 
 class UserPortfolio extends React.Component {
   constructor() {
@@ -58,7 +56,6 @@ class UserPortfolio extends React.Component {
   }
   
   renderPortfolioForm() {
-    console.log('here in render form');
     return (
       <View>
       <StyledText

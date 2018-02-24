@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -9,7 +9,7 @@ import { sliderStyles } from '../../constants/styles';
 import { updateRiskLevel } from '../../actions/update-risk-level';
 import { getWidthSizeForScreen } from '../../constants/layout';
 
-class RiskLevels extends React.Component {
+class RiskLevels extends Component {
 
   componentWillMount() {
     this.props.updateRiskLevel(1);

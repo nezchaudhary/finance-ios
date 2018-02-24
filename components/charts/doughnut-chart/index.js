@@ -10,7 +10,6 @@ import { generateChartData, generateChartDataObject, getHeader } from './doughnu
 import { getWidthSizeForScreen } from '../../../constants/layout';
 
 class DoughnutChart extends Component {
-
   collectData() {
     const total = this.props.userPortfolioTotal;
     const riskLevel = this.props.riskLevel;
@@ -19,25 +18,6 @@ class DoughnutChart extends Component {
     const type = this.props.type;
     const investments = this.props.investmentTypes;
     return { total, riskLevel, userPortfolio, userPortfolioValues, type, investments };
-  }
-
-  getData() {
-    if (this.props.riskLevel) {
-      const p = RiskLevelPortfolios[this.props.riskLevel];
-      const percentages = Object.values(p);
-      let label;
-      return this.props.investmentTypes.reduce((result, type, i) => {
-        // label = portfolio ? `${type.name} - $${formatDollarString(portfolio[index])} (${percentages[index]}%)`
-        if (percentages[i] > 0) {
-          label = `${type.name} (${percentages[i]}%)`;
-          result.data.push(percentages[i]);
-          result.colors.push(type.color);
-          result.labels.push(label);
-        }
-        return result;
-      }, {data: [], colors:[], labels: []});
-    }
-    return null;
   }
 
   render() {
@@ -70,4 +50,5 @@ const mapStateToProps = (state) => {
   const { riskLevel, investmentTypes, userPortfolio, userPortfolioTotal } = state;
   return { riskLevel, investmentTypes, userPortfolio, userPortfolioTotal }
 };
+
 export default connect(mapStateToProps)(DoughnutChart);
