@@ -1,4 +1,4 @@
-export function updateCustomPortfolio(portfolio) {
+export function updateUserPortfolio(portfolio) {
   return {
     type: 'USER_PORTFOLIO',
     payload: portfolio,

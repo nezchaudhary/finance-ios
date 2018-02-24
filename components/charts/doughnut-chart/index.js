@@ -12,14 +12,13 @@ import { getWidthSizeForScreen } from '../../../constants/layout';
 class DoughnutChart extends Component {
 
   collectData() {
-    // const total = this.props.userPortfolio ? getPortfolioSize(this.props.userPortfolio) : 0;
-    const riskLevel = this.props.selectedLevel;
-    // const userPortfolio = this.props.userPortfolio;
-    // const userPortfolioValues = this.props.userPortfolio ? Object.values(this.props.userPortfolio) : null;
+    const total = this.props.userPortfolioTotal;
+    const riskLevel = this.props.riskLevel;
+    const userPortfolio = this.props.userPortfolio;
+    const userPortfolioValues = this.props.userPortfolio ? Object.values(this.props.userPortfolio) : null;
     const type = this.props.type;
     const investments = this.props.investmentTypes;
-    // return { total, riskLevel, userPortfolio, userPortfolioValues, type, investments };
-    return { type, investments };
+    return { total, riskLevel, userPortfolio, userPortfolioValues, type, investments };
   }
 
   getData() {
@@ -43,28 +42,32 @@ class DoughnutChart extends Component {
 
   render() {
     const data = this.collectData();
-    const d = this.getData();
+    const chartData = generateChartData(data);
+    const header = getHeader(data.type, data.riskLevel, data.total);
       return (
         <ScrollView style={{ flex: 1 }}>
           <View>
             <StatusBar
               hidden={true}
             />
-            <StyledText style={{ fontWeight: 'bold' }} text="Basic Doughnut">Basic</StyledText>
+            <StyledText style={{ fontWeight: 'bold' }} text={header}></StyledText>
             <PieChart
               chart_wh={getWidthSizeForScreen(175, 200, 250)}
-              series={d.data}
-              sliceColor={d.colors}
+              series={chartData.values}
+              sliceColor={chartData.colors}
               doughnut={true}
               coverRadius={0.45}
               coverFill={'#FFF'}
             />
           </View>
-          <DoughnutLegend data={d}/>
+          <DoughnutLegend data={chartData}/>
         </ScrollView>
       );
   }
 }
 
-const mapStateToProps = (state) => ( { riskLevel: state.riskLevel, investmentTypes: state.investmentTypes });
+const mapStateToProps = (state) => {
+  const { riskLevel, investmentTypes, userPortfolio, userPortfolioTotal } = state;
+  return { riskLevel, investmentTypes, userPortfolio, userPortfolioTotal }
+};
 export default connect(mapStateToProps)(DoughnutChart);

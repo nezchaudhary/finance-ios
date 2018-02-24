@@ -1,40 +1,44 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-// import { connect } from 'react-redux';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux';
 
 import RiskLevels from './risk-levels';
 import DoughnutChart from './charts/doughnut-chart';
-// import StyledButton from './button';
 import UserPortfolio from './user-portfolio';
 import StyledText from './text/styled-text';
-import AppForm from './form';
 
 class HomePage extends React.Component {
+  getRiskChartType() {
+    return this.props.userPortfolioTotal ? 'user-risk-portfolio' : 'risk-portfolio';
+  }
+
   render() {
     return (
-      <View style={viewStyles.mainContainer}>
-        <View style={viewStyles.logoContainer}>
-          <Text style={textStyles.logo}>
-            <StyledText style={textStyles.investiLogo} title='Investi' />
-            <StyledText style={textStyles.meLogo} title='Me' />
-          </Text>
-        </View>
-        <View style={viewStyles.headerContainer}>
-          <StyledText  
-            text="Compare your investment portfolio with a ideal investment portfolio for risk levels
-              between 1-10"
-          />
-        </View>
-        <View style={viewStyles.riskLevelsContainer}>
-          <RiskLevels />
-        </View>
-        <View style={viewStyles.riskChartContainer}>
-          <DoughnutChart />
-        </View>
-          <View style={viewStyles.userPortfolioContainer}>
-            <UserPortfolio />
+      <ScrollView>
+        <View style={viewStyles.mainContainer}>
+          <View style={viewStyles.logoContainer}>
+            <Text style={textStyles.logo}>
+              <StyledText style={textStyles.investiLogo} text='Investi' />
+              <StyledText style={textStyles.meLogo} text='Me' />
+            </Text>
           </View>
-      </View>
+          <View style={viewStyles.headerContainer}>
+            <StyledText  
+              text="Compare your investment portfolio with a ideal investment portfolio for risk levels
+                between 1-10"
+            />
+          </View>
+          <View style={viewStyles.riskLevelsContainer}>
+            <RiskLevels />
+          </View>
+          <View style={viewStyles.riskChartContainer}>
+            <DoughnutChart type={this.getRiskChartType()}/>
+          </View>
+            <View style={viewStyles.userPortfolioContainer}>
+              <UserPortfolio />
+            </View>
+        </View>
+      </ScrollView>
       
     );
   }
@@ -76,9 +80,9 @@ const textStyles = StyleSheet.create({
   },
 });
 
-// const mapStateToProps = (state) => {
-//   const { investmentTypes, userPortfolioTotal } = state;
-//   return { investmentTypes, userPortfolioTotal };
-// };
-// export default connect(mapStateToProps)(HomePage);
-export default HomePage;
+const mapStateToProps = (state) => {
+  const { userPortfolioTotal } = state;
+  return { userPortfolioTotal };
+};
+export default connect(mapStateToProps)(HomePage);
+// export default HomePage;

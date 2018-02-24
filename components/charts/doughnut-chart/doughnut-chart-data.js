@@ -30,8 +30,9 @@ const generateChartData = (data) => {
   const { riskLevel, userPortfolio, userPortfolioValues, total, type, investments } = data;
   const riskValues = Object.values(RiskLevelPortfolios[riskLevel]);
   const riskPortfolio = RiskLevelPortfolios[riskLevel];
+  // console.log('in generate chart', data);
   let chartData;
-  if (type === 'risk-level') {
+  if (type === 'risk-portfolio') {
     chartData = createChartDataSet(investments, riskValues);
   } else {
     if (type === 'user-risk-portfolio') {
@@ -60,7 +61,7 @@ const generateChartData = (data) => {
 }
 
 const getHeader = (type, level, total) => {
-  if (type === 'risk-level') {
+  if (type === 'risk-portfolio') {
     return `Risk ${level} Portfolio`;
   } else if (type === 'user-portfolio') {
     return 'Your Current Portfolio';

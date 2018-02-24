@@ -1,7 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 
 import StyledButton from '../button';
+import StyledText from '../text/styled-text';
+// import AppForm from '../form';
+import DoughnutChart from '../charts/doughnut-chart'
+import UserPortfolioForm from './user-portfolio-form';
 
 
 class UserPortfolio extends React.Component {
@@ -9,72 +14,86 @@ class UserPortfolio extends React.Component {
     super();
     this.state = {
       renderCompareButton: true,
-      renderForm: false
+      renderForm: false,
+      renderChart: false
     }
   }
 
   handleCompareButtonClick() {
     this.setState({ renderCompareButton: false, renderForm: true });
   }
-
+  
   handleFormSubmit() {
-    this.setState({ renderForm: false });
+    this.setState({ renderForm: false, renderChart: true });
+  }
+  
+  handleTryAgainClick() {
+    this.setState({ renderForm: true, renderChart: false });
   }
 
+  handleChangePortfolioClick() {
+    this.setState({ renderForm: true, renderChart: false});
+  }
+  
   renderCompareButton() {
-    if (!this.props.userPortfolioTotal) {
-      return (
-        <View style={viewStyles.buttonContainer}>
-          <StyledButton
-            title='Compare Your Portfolio'
-            click={this.handleCompareButtonClick.bind(this)}
-            style={{ fontSize: 12 }} />
-        </View>
-      );
-    }
-    return null;
+    return (
+      <View style={viewStyles.buttonContainer}>
+      <StyledButton
+      title='Compare Your Portfolio'
+      click={this.handleCompareButtonClick.bind(this)}
+      style={{ fontSize: 12 }} />
+      </View>
+    );
   }
-
+  
   renderTryAgainButton() {
-    if (this.props.userPortfolio && !this.props.userPortfolioTotal) {
-      return (
-        <View>
-          <StyledButton
-            title="No Investments Found. Try Again"
-            click={this.handleTryAgainClick} 
-          />
-        </View>
-        )
-      }
-    }
-
+    return (
+      <View>
+      <StyledButton
+      title="No Investments Found. Try Again"
+      click={this.handleTryAgainClick.bind(this)} 
+      />
+      </View>
+    )
+  }
+  
   renderPortfolioForm() {
-    if (this.state.renderForm) {
-      return (
-        <View>
-          <AppForm submit={this.handleFormSubmit.bind(this)} list={this.props.investmentTypes} />
-        </View>
-      )
-    }
-    return null;
+    console.log('here in render form');
+    return (
+      <View>
+      <StyledText
+        text="Please tell us your investments in USD"
+        style={{ fontWeight: 'bold' }}
+      />
+        <UserPortfolioForm 
+          submit={this.handleFormSubmit.bind(this)} 
+        />
+      </View>
+    )
   }
 
   renderUserChart() {
-    // if (this)
-    if (this.props.userPortfolio && this.props.userPortfolioTotal) {
-      return (
-        <View>
-          <DoughnutChart />
-        </View>
-      );
-    }
+    return (
+      <View>
+        <DoughnutChart type='user-portfolio'/>
+        <StyledButton
+          title="Change Portfolio"
+          click={this.handleChangePortfolioClick.bind(this)}
+          />
+      </View>
+    );
   }
   
   render() {
-    return this.renderCompareButton();
-    // { this.renderTryAgainButton() }
-    // { this.renderPortfolioForm() }
-    // { this.renderUserChart() }
+    if (this.state.renderCompareButton) {
+      return this.renderCompareButton();
+    } else if (!this.state.renderCompareButton && this.state.renderForm) {
+      return this.renderPortfolioForm();
+    } else if (this.props.userPortfolio && !this.props.userPortfolioTotal) {
+      return this.renderTryAgainButton();
+    } else if (this.state.renderChart && this.props.userPortfolio && this.props.userPortfolioTotal) {
+      return this.renderUserChart();
+    }
   }
 }
 
@@ -84,4 +103,9 @@ const viewStyles = {
   }
 }
 
-export default UserPortfolio;
+const mapStateToProps = (state) => {
+  const { investmentTypes, userPortfolioTotal, userPortfolio } = state;
+  return { investmentTypes, userPortfolioTotal, userPortfolio };
+};
+
+export default connect(mapStateToProps)(UserPortfolio);
