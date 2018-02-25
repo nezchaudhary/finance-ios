@@ -28,19 +28,19 @@ class HomePage extends Component {
     return null;
   }
 
-  renderPortfolioSize() {
-    if (this.props.userPortfolioTotal) {
-      return (
-        <View style={viewStyles.userPortfolioSize}>
-          <StyledText 
-            text={`Your Portfolio Size: $${formatDollarString(this.props.userPortfolioTotal)})`}
-            style={textStyles.userPortfolioSize}
-          />
-        </View>
-      );
-    }
-    return null;
-  }
+  // renderPortfolioSize() {
+  //   if (this.props.userPortfolioTotal) {
+  //     return (
+  //       <View style={viewStyles.userPortfolioSize}>
+  //         <StyledText 
+  //           text={`Your Portfolio Size: $${formatDollarString(this.props.userPortfolioTotal)})`}
+  //           style={textStyles.userPortfolioSize}
+  //         />
+  //       </View>
+  //     );
+  //   }
+  //   return null;
+  // }
 
   render() {
     return (
@@ -65,7 +65,6 @@ class HomePage extends Component {
             <View style={viewStyles.riskLevelsContainer}>
               <RiskLevels />
             </View>
-            {this.renderPortfolioSize()}
             <View style={viewStyles.riskChartContainer}>
               <DoughnutChart type={this.getRiskChartType()}/>
             </View>

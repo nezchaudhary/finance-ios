@@ -40,7 +40,7 @@ class DoughnutChart extends Component {
               />
             </View>
             <View style={viewStyles.legendContainer}>
-              <DoughnutLegend data={chartData}/>
+              <DoughnutLegend data={chartData} />
             </View>
           </View>
       );

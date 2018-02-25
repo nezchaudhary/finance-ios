@@ -7,7 +7,6 @@ class DoughnutLegend extends Component {
   render() {
     return (
       <View>
-        <View style={viewStyles.legendSpacer}></View>
         <View style={viewStyles.legendItems}>
             {this.props.data.labels.map((value, index) => {
               const backgroundColor = `${this.props.data.colors[index]}`;
@@ -19,16 +18,12 @@ class DoughnutLegend extends Component {
               );
             })}
         </View>
-        <View style={viewStyles.legendSpacer}></View>
       </View>
     );
   }
 }
 
 const viewStyles = StyleSheet.create({
-  legendSpacer: {
-    flex: 2,
-  },
   legendItems: {
     flex: 6,
     flexDirection: 'row',

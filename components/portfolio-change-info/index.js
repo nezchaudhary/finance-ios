@@ -17,7 +17,10 @@ class PortfolioChangeData extends Component {
       if (changes.length) {
         return (
           <View>
-            
+            <StyledText
+              style={[textStyles.portfolioChangeHeader, textStyles.portfolioSize]}
+              text={`Your portfolio size: $${formatDollarString(this.props.userPortfolioTotal)}`}
+            />
             <StyledText 
               style={textStyles.portfolioChangeHeader} 
               text="To match your portfolio to the risk portfolio.." 
@@ -25,7 +28,7 @@ class PortfolioChangeData extends Component {
             {changes.map((change, i) => {
               return (
                 <StyledText key={i} 
-                  text={`Move $${formatDollarString(change.value)} from ${change.from} to ${change.to}`}
+                  text={`- Move $${formatDollarString(change.value)} from ${change.from} to ${change.to}`}
                   style={textStyles.changeListItem} 
                 />
               )
@@ -49,12 +52,15 @@ const textStyles = StyleSheet.create({
   portfolioChangeHeader: {
     fontWeight: 'bold',
     textAlign: 'center',
+    marginBottom: '0.5%',
   },
   portfolioSize: {
     fontSize: getWidthSizeForScreen(14, 15, 16),
+    marginBottom: '2%',
   },
   changeListItem: {
-    textAlign: 'center',
+    marginTop: '0.5%',
+    marginHorizontal: '10%',
   }
 })
 
