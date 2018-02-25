@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
-
 import StyledButton from '../button';
 import StyledText from '../text/styled-text';
 import { updateUserPortfolio } from '../../actions/update-user-portfolio';

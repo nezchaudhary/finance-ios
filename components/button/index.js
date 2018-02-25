@@ -17,14 +17,14 @@ class StyledButton extends Component {
 const styles = StyleSheet.create({
   view: {
     alignItems: 'center',
-    marginHorizontal: getWidthSizeForScreen(0, 30, 20),
-    paddingVertical: getWidthSizeForScreen(10, 30, 40),
-    paddingHorizontal: getWidthSizeForScreen(10, 20, 25),
+    marginHorizontal: getWidthSizeForScreen(50, 55, 60),
+    paddingVertical: getWidthSizeForScreen(10, 12, 15),
     backgroundColor: '#1779ba'
   },
   text: {
     fontFamily,
     color: '#fefefe',
+    fontSize: getWidthSizeForScreen(13, 14, 16),
   }
 });
 

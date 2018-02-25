@@ -37,9 +37,9 @@ class UserPortfolio extends React.Component {
     return (
       <View style={viewStyles.buttonContainer}>
       <StyledButton
-      title='Compare Your Portfolio'
-      click={this.handleCompareButtonClick.bind(this)}
-      style={{ fontSize: 12 }} />
+        title='Compare Your Portfolio'
+        click={this.handleCompareButtonClick.bind(this)}
+      />
       </View>
     );
   }
@@ -95,9 +95,9 @@ class UserPortfolio extends React.Component {
 }
 
 const viewStyles = {
-  buttonContainer: {
-    flex:1
-  }
+  // buttonContainer: {
+  //   flex:1
+  // }
 }
 
 const mapStateToProps = (state) => {
