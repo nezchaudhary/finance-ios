@@ -29,29 +29,31 @@ class HomePage extends Component {
   render() {
     return (
       <ScrollView>
-        <View style={viewStyles.mainContainer}>
+        <View style={viewStyles.appContainer}>
           <View style={viewStyles.logoContainer}>
             <Text style={textStyles.logo}>
               <StyledText style={textStyles.investiLogo} text='Investi' />
               <StyledText style={textStyles.meLogo} text='Me' />
             </Text>
           </View>
-          <View style={viewStyles.headerContainer}>
-            <StyledText  
-              text="Compare your investment portfolio with a ideal investment portfolio for risk levels
-                between 1-10"
-            />
+          <View style={viewStyles.bodyContainer}>
+            <View style={viewStyles.headerContainer}>
+              <StyledText  
+                text="Compare your investment portfolio with a ideal investment portfolio for risk levels
+                  between 1-10"
+              />
+            </View>
+            <View style={viewStyles.riskLevelsContainer}>
+              <RiskLevels />
+            </View>
+            <View style={viewStyles.riskChartContainer}>
+              <DoughnutChart type={this.getRiskChartType()}/>
+            </View>
+            <View style={viewStyles.userPortfolioContainer}>
+              <UserPortfolio />
+            </View>
+            {this.renderPortfolioChangeData()}
           </View>
-          <View style={viewStyles.riskLevelsContainer}>
-            <RiskLevels />
-          </View>
-          <View style={viewStyles.riskChartContainer}>
-            <DoughnutChart type={this.getRiskChartType()}/>
-          </View>
-          <View style={viewStyles.userPortfolioContainer}>
-            <UserPortfolio />
-          </View>
-          {this.renderPortfolioChangeData()}
         </View>
       </ScrollView> 
     );
@@ -59,54 +61,54 @@ class HomePage extends Component {
 }
 
 const viewStyles = StyleSheet.create({
-  mainContainer: { // top level container
+  appContainer: { // top level container
     flex: 1,
-    // alignItems: 'center'
+    alignItems: 'center',
   },
-  logoContainer: { // main logo container
-    flex: 0.1,
-    marginTop: 12,
-    borderStyle: 'solid',
-    borderBottomColor: '#e6e6e6',
-    borderBottomWidth: 1,
+  bodyContainer: {
     paddingHorizontal,
   },
+  logoContainer: { // main logo container
+    marginTop: '3%',
+    borderStyle: 'solid',
+    borderBottomColor: '#e6e6e6',
+    borderBottomWidth: 0.5,
+    alignItems: 'center',
+    width: '100%',
+  },
   headerContainer: { // main header container
-    flex: 0.2,
-    marginTop: 5,
-    paddingHorizontal
-    // marginHorizontal: 10
+    // flex: 1,
+    marginTop: '5%',
+    paddingHorizontal,
   },
   riskLevelsContainer: { // slider container
     flex: 1,
-    paddingHorizontal,
-    alignItems: 'center',
-    marginTop: -8
+    // width:'100%',
   },
   riskChartContainer: { // charts container
-    flex: 4
+    // flex: 4,
+    marginTop: '5%',
   },
-  userPortfolioContainer: {
-    flex: 1,
+  userPortfolioContainer: { //user portfolio container
+    // flex: 1,
+    marginTop: '5%',
   },
-  portfolioChangeContainer: {
-    flex: 1
-  }
+  portfolioChangeContainer: { // portfolio change data container
+    // flex: 1,
+  },
 });
 
 const logoFontSize = getWidthSizeForScreen(22, 25, 30)
 
 const textStyles = StyleSheet.create({
-  logo: { // logo text 
+  logo: { // Main logo text box
     marginTop: 12,
-    minWidth: '100%',
-    
   },
-  investiLogo: {
+  investiLogo: { // 'investi' style
     fontSize: logoFontSize,
     color: '#96e1f2',
   },
-  meLogo: {
+  meLogo: { // 'me' style
     fontSize: logoFontSize,
     color: '#4b81aa',
   },
@@ -116,4 +118,5 @@ const mapStateToProps = (state) => {
   const { userPortfolioTotal } = state;
   return { userPortfolioTotal };
 };
+
 export default connect(mapStateToProps)(HomePage);

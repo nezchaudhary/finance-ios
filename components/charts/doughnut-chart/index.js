@@ -25,23 +25,53 @@ class DoughnutChart extends Component {
     const chartData = generateChartData(data);
     const header = getHeader(data.type, data.riskLevel, data.total);
       return (
-        <ScrollView style={{ flex: 1 }}>
-          <View>
-            <StyledText style={{ fontWeight: 'bold', }} text={header}></StyledText>
-            <PieChart
-              chart_wh={getWidthSizeForScreen(175, 200, 250)}
-              series={chartData.values}
-              sliceColor={chartData.colors}
-              doughnut={true}
-              coverRadius={0.45}
-              coverFill={'#FFF'}
-            />
+        // <ScrollView style={{ flex: 1 }}>
+          <View style={viewStyles.mainContainer}>
+            <View style={viewStyles.chartHeader}>
+              <StyledText style={textStyles.chartHeader} text={header}></StyledText>
+            </View>
+            <View style={viewStyles.chartContainer}>
+              <PieChart
+                chart_wh={getWidthSizeForScreen(225, 250, 300)}
+                series={chartData.values}
+                sliceColor={chartData.colors}
+                doughnut={true}
+                coverRadius={0.45}
+                coverFill={'#FFF'}
+              />
+            </View>
+            <View style={viewStyles.legendContainer}>
+              <DoughnutLegend data={chartData}/>
+            </View>
           </View>
-          <DoughnutLegend data={chartData}/>
-        </ScrollView>
+        // </ScrollView>
       );
   }
 }
+
+const viewStyles = StyleSheet.create({
+  mainContainer: { // main component view style
+    alignItems: 'center',
+    marginTop: '2%',
+  },
+  chartHeader: { // chart header view style
+  },
+  chartContainer: { // main chart view style
+    marginTop: '2%',
+  },
+  legendContainer: {
+    marginTop: '5%',
+    justifyContent: 'center',
+    width: '92%',
+  },
+});
+
+const textStyles = StyleSheet.create({
+  chartHeader: { // chart header text style
+    fontWeight: 'bold',
+    fontSize: getWidthSizeForScreen(14, 16, 17),
+  },
+})
 
 const mapStateToProps = (state) => {
   const { riskLevel, investmentTypes, userPortfolio, userPortfolioTotal } = state;

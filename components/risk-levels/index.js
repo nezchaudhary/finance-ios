@@ -20,8 +20,8 @@ class RiskLevels extends Component {
       <View>
         <View style={viewStyles.mainContainer}>
           <View style={viewStyles.riskType}>
-            <StyledText style={{ fontWeight: 'bold' }} text={'1'} />
-            <StyledText text={'Low'} />
+            <StyledText style={textStyles.riskTypeNumber} text={'1'} />
+            <StyledText style={textStyles.riskTypeText} text={'Low'} />
           </View>
           <View style={viewStyles.sliderContainer}>
             <AppSlider 
@@ -38,15 +38,13 @@ class RiskLevels extends Component {
             />
           </View>
           <View style={viewStyles.riskType}>
-            <StyledText 
-              style={{ fontWeight: 'bold'}} 
-              text={'10'} />
-            <StyledText text={'High'} />
+            <StyledText style={textStyles.riskTypeNumber} text={'10'} />
+            <StyledText style={textStyles.riskTypeText} text={'High'} />
           </View>
         </View>
         <View style={viewStyles.riskLevelIndicator}>
           <StyledText
-            style={{ fontWeight: 'bold', marginTop: -12 }}
+            style={textStyles.riskLevel}
             text={`Risk Level: ${this.props.riskLevel}`}
           />
         </View>
@@ -55,13 +53,13 @@ class RiskLevels extends Component {
   }
 }
 
-const trackStyle = {
+const trackStyle = { // slider track style
   height: 8,
   borderRadius: 5,
   backgroundColor: '#d0d0d0',
 };
 
-const thumbStyle = {
+const thumbStyle = { // slider thumb style
   width: 10,
   height: 20,
   borderRadius: 5,
@@ -72,28 +70,44 @@ const viewStyles = StyleSheet.create({
   mainContainer: { // top level container for component
     marginTop: 12,
     flexDirection: 'row',
-    flex: 0.80,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '95%'
+    // flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // width: '95%'
   },
   riskType: { // views for number 1 and 10
-    flex: 1,
-    // justifyContent: 'flex-start',
-    alignItems: 'center',
+    flex: 2,
+    marginTop: 5,
+    // alignItems: 'center',
   },
-  sliderContainer: { 
-    flex: 8,
-    justifyContent: 'center',
-    paddingHorizontal: 10
+  sliderContainer: {  // slider container
+    flex: 6,
+    // width: getWidthSizeForScreen(20, 300, 350),
+    // width: '98%',
+    // justifyContent: 'center',
+    // paddingHorizontal: 10
 
   },
-  riskLevelIndicator: {
-    flex: 0.7,
+  riskLevelIndicator: { // current risk level container
+    // flex: 0.7,
     alignItems: 'center',
     // justifyContent: 'flex-start'
   }  
 });
+
+const textStyles = StyleSheet.create({
+  riskLevel: { // text style for current risk level
+    //fontWeight: 'bold',
+    marginTop: -8,
+    fontSize: getWidthSizeForScreen(12, 13, 14),
+  },
+  riskTypeText: { // text style for Low/High
+    fontSize: getWidthSizeForScreen(11, 12, 13),
+  },
+  riskTypeNumber: { // text style for number 1/10
+    fontWeight: 'bold',
+  },
+})
 
 const mapStateToProps = (state) => ({ riskLevel: state.riskLevel });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ updateRiskLevel }, dispatch);

@@ -1,23 +1,42 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import StyledText from '../../text/styled-text';
+import { getWidthSizeForScreen } from '../../../constants/layout';
 
 class DoughnutLegend extends Component {
   render() {
     return (
-      <View>
+      <Text>
         {this.props.data.labels.map((value, index) => {
-          const style = { 'backgroundColor': `${this.props.data.colors[index]}` };
+          const backgroundColor = `${this.props.data.colors[index]}`;
           return (
-            <View key={value}>
-              <StyledText style={style} />
-              <StyledText style={{ color: '#737373' }} text={value} />
-            </View>
+            <Text key={value}>{'   '}
+              <View style={[viewStyles.itemColor, { backgroundColor } ]}></View>
+              <StyledText style={textStyles.itemData} text={` ${value}`} /> 
+            </Text>
           );
         })}
-      </View>
+      </Text>
     );
   }
 }
+
+const viewStyles = StyleSheet.create({
+  itemColor: {
+    width: '25%',
+    height: '11%',
+    marginTop: '9.5%',
+  }
+});
+
+const textStyles = StyleSheet.create({
+  itemContainer: {
+    marginRight: '10%',
+  },
+  itemData: {
+    fontSize: getWidthSizeForScreen(10.5, 11, 12),
+    color: '#737373',
+  },
+});
 
 export default DoughnutLegend;

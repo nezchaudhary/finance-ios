@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import { StyleSheet, View, TextInput, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -61,7 +61,9 @@ class UserPortfolioForm extends Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView>
+      <KeyboardAwareScrollView
+        resetScrollToCoords={{ x: 0, y: 0 }}
+        scrollEnabled={false}>
         <View style={styles.container}>
         {this.createInputFields()}
           <StyledButton 
