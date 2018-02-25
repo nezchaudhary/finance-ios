@@ -10,6 +10,7 @@ import StyledText from './text/styled-text';
 import PortfolioChangeInfo from './portfolio-change-info';
 import { getWidthSizeForScreen } from '../constants/layout';
 import { paddingHorizontal } from '../constants/styles';
+import formatDollarString from '../utility/format-dollar-string';
 
 class HomePage extends Component {
   getRiskChartType() {
@@ -27,40 +28,54 @@ class HomePage extends Component {
     return null;
   }
 
+  renderPortfolioSize() {
+    if (this.props.userPortfolioTotal) {
+      return (
+        <View style={viewStyles.userPortfolioSize}>
+          <StyledText 
+            text={`Your Portfolio Size: $${formatDollarString(this.props.userPortfolioTotal)})`}
+            style={textStyles.userPortfolioSize}
+          />
+        </View>
+      );
+    }
+    return null;
+  }
+
   render() {
     return (
-      // <ScrollView>
-        <View style={viewStyles.appContainer}>
-          <View style={viewStyles.titleContainer}>
-            <View style={viewStyles.titleTextContainer}>
-              <Text>
-                <StyledText style={textStyles.investiLogo} text='Investi' />
-                <StyledText style={textStyles.meLogo} text='Me' />
-              </Text>
-            </View>
+      <View style={viewStyles.appContainer}>
+        <View style={viewStyles.titleContainer}>
+          <View style={viewStyles.titleTextContainer}>
+            <Text>
+              <StyledText style={textStyles.investiLogo} text='Investi' />
+              <StyledText style={textStyles.meLogo} text='Me' />
+            </Text>
           </View>
-          <ScrollView>
-          <KeyboardAwareScrollView>
-            <View style={viewStyles.bodyContainer}>
-              <View style={viewStyles.headerContainer}>
-                <StyledText  
-                  text="Compare your investment portfolio with a ideal investment portfolio for risk levels
-                    between 1-10"
-                />
-              </View>
-              <View style={viewStyles.riskLevelsContainer}>
-                <RiskLevels />
-              </View>
-              <View style={viewStyles.riskChartContainer}>
-                <DoughnutChart type={this.getRiskChartType()}/>
-              </View>
-              <View style={viewStyles.userPortfolioContainer}>
-                <UserPortfolio />
-              </View>
-              {this.renderPortfolioChangeData()}
-              </View>
-            </KeyboardAwareScrollView>
-          </ScrollView>
+        </View>
+        <ScrollView>
+        <KeyboardAwareScrollView>
+          <View style={viewStyles.bodyContainer}>
+            <View style={viewStyles.headerContainer}>
+              <StyledText  
+                text="Compare your investment portfolio with a ideal investment portfolio for risk levels
+                  between 1-10"
+              />
+            </View>
+            <View style={viewStyles.riskLevelsContainer}>
+              <RiskLevels />
+            </View>
+            {this.renderPortfolioSize()}
+            <View style={viewStyles.riskChartContainer}>
+              <DoughnutChart type={this.getRiskChartType()}/>
+            </View>
+            <View style={viewStyles.userPortfolioContainer}>
+              <UserPortfolio />
+            </View>
+            {this.renderPortfolioChangeData()}
+            </View>
+          </KeyboardAwareScrollView>
+        </ScrollView>
         </View>
     );
   }
@@ -73,6 +88,7 @@ const viewStyles = StyleSheet.create({
   },
   bodyContainer: {
     paddingHorizontal,
+    marginBottom: '5%',
   },
   titleContainer: { // main logo container
     flexDirection: 'row',
@@ -96,12 +112,16 @@ const viewStyles = StyleSheet.create({
     flex: 1,
   },
   riskChartContainer: { // charts container
-    marginTop: '5%',
+    marginTop: '2%',
   },
   userPortfolioContainer: { //user portfolio container
     marginTop: '5%',
   },
+  userPortfolioSize: {
+    marginTop: '5%',
+  },
   portfolioChangeContainer: { // portfolio change data container
+    marginTop: '5%',
   },
 });
 
@@ -116,6 +136,12 @@ const textStyles = StyleSheet.create({
     fontSize: logoFontSize,
     color: '#4b81aa',
   },
+  userPortfolioSize: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 15,
+
+  }
 });
 
 const mapStateToProps = (state) => {

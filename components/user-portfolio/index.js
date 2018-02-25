@@ -77,7 +77,7 @@ class UserPortfolio extends React.Component {
           title="Change Portfolio"
           click={this.handleChangePortfolioClick.bind(this)}
           clear={true}
-          style={{ fontWeight: 'bold' }}
+          style={viewStyles.changeButton}
           />
       </View>
     );
@@ -99,7 +99,11 @@ class UserPortfolio extends React.Component {
 const viewStyles = {
   formContainer: {
     alignItems: 'center'
-  }
+  },
+  changeButton: {
+    fontWeight: 'bold',
+    marginTop: '2%',
+  },
 }
 
 const textStyles = StyleSheet.create({

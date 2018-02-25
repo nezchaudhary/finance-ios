@@ -18,7 +18,8 @@ class UserPortfolioForm extends Component {
 
   componentWillMount() {
     this.props.investmentTypes.map(type => {
-      this.state[type.name] = '$';
+      let value = this.props.userPortfolio ? this.props.userPortfolio[type.name] : '';
+      this.state[type.name] = `$${value ? value : ''}`;
     });
   }
 
@@ -64,16 +65,23 @@ class UserPortfolioForm extends Component {
     return (
       <View style={viewStyles.formBody}>
           {this.createInputFields()}
-            <StyledButton 
-              title='Show Portfolio' 
-              click={this.handleSubmit.bind(this)} 
-            />
+          <View style={viewStyles.showPortfolioButtonView}>
+              <StyledButton 
+                title='Show Portfolio' 
+                click={this.handleSubmit.bind(this)} 
+                style={viewStyles.showPortfolioButton}
+              />
+            </View>
       </View>
     );
   }
 }
 
-const mapStateToProps = (state) => ({ investmentTypes: state.investmentTypes });
+const mapStateToProps = (state) => {
+  const { investmentTypes, userPortfolio } = state;
+  return { investmentTypes, userPortfolio };
+};
+   
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({ updateUserPortfolio, updateUserPortfolioTotal }, dispatch)
 );
@@ -88,6 +96,12 @@ const viewStyles = StyleSheet.create({
   },
   formRowView: {
     marginBottom: '3%',
+  },
+  showPortfolioButtonView: {
+    marginVertical: '8%',
+  },
+  showPortfolioButton: {
+    paddingHorizontal: '8%',
   }
 });
 
@@ -103,7 +117,13 @@ const textStyles = StyleSheet.create({
     borderColor: borderColor,
     color: fontColor,
     width: getWidthSizeForScreen(175, 200, 225),
-    height: getWidthSizeForScreen(22, 24, 28), 
+    height: getWidthSizeForScreen(22, 24, 28),
+    shadowOffset: {
+      width: 0.2,
+      height: 0.2,
+    },
+    shadowColor: '#bfbfbf',
+    shadowOpacity: 0.2,
   }
 });
 

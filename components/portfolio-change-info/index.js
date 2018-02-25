@@ -6,6 +6,7 @@ import { calculateHowToMoveInvestments } from '../../calculate-portfolio-shift/i
 import RiskPortfolios from '../../mock-data/risk-level-portfolios';
 import formatDollarString from '../../utility/format-dollar-string';
 import StyledText from '../text/styled-text';
+import { getWidthSizeForScreen } from '../../constants/layout';
 
 class PortfolioChangeData extends Component {
   render() {
@@ -16,21 +17,25 @@ class PortfolioChangeData extends Component {
       if (changes.length) {
         return (
           <View>
-            <StyledText  
-              style={{ fontWeight: 'bold' }} 
-              text={`Your portfolio size: $${formatDollarString(this.props.userPortfolioTotal)}`}
-            />
+            
             <StyledText 
-              style={{ fontWeight: 'bold' }} 
-              text="To match your portfolio to the risk portfolio, you need to.." 
+              style={textStyles.portfolioChangeHeader} 
+              text="To match your portfolio to the risk portfolio.." 
             />
-            {changes.map((change, i) => (<StyledText key={i} text={`Move $${formatDollarString(change.value)} from ${change.from} to ${change.to}`} />))}
+            {changes.map((change, i) => {
+              return (
+                <StyledText key={i} 
+                  text={`Move $${formatDollarString(change.value)} from ${change.from} to ${change.to}`}
+                  style={textStyles.changeListItem} 
+                />
+              )
+            })}
           </View>
         );
       } else {
         return (
           <StyledText 
-            style={{ fontWeight: 'bold' }}
+            style={textStyles.portfolioChangeHeader} 
             text="Your portfolio is match to your risk level, you do not need to make any changes" 
           />
         );
@@ -40,9 +45,27 @@ class PortfolioChangeData extends Component {
   }
 }
 
+const textStyles = StyleSheet.create({
+  portfolioChangeHeader: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  portfolioSize: {
+    fontSize: getWidthSizeForScreen(14, 15, 16),
+  },
+  changeListItem: {
+    textAlign: 'center',
+  }
+})
+
 const mapStateToProps = (state) => {
   const { riskLevel, userPortfolio, userPortfolioTotal } = state;
   return { riskLevel, userPortfolio, userPortfolioTotal };
 };
 
 export default connect(mapStateToProps)(PortfolioChangeData);
+
+// <StyledText  
+//   style={[textStyles.portfolioChangeHeader, textStyles.portfolioSize]} 
+//   text={`Your portfolio size: $${formatDollarString(this.props.userPortfolioTotal)}`}
+// />
