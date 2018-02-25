@@ -41,7 +41,7 @@ class StyledButton extends Component {
 const styles = StyleSheet.create({
   buttonView: {
     alignItems: 'center',
-    marginHorizontal: getWidthSizeForScreen(50, 55, 60),
+    // marginHorizontal: getWidthSizeForScreen(50, 55, 60),
   },
   buttonText: {
     fontFamily,
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
   },
   regularButtonView: {
     paddingVertical: getWidthSizeForScreen(10, 12, 15),
+    paddingHorizontal: 0,
     backgroundColor: regularButtonBackgroundColor
   },
   regularButtonText: {

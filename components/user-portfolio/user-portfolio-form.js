@@ -69,7 +69,6 @@ class UserPortfolioForm extends Component {
               <StyledButton 
                 title='Show Portfolio' 
                 click={this.handleSubmit.bind(this)} 
-                style={viewStyles.showPortfolioButton}
               />
             </View>
       </View>
@@ -91,18 +90,16 @@ export default connect(mapStateToProps, mapDispatchToProps)(UserPortfolioForm);
 const viewStyles = StyleSheet.create({
   formBody: {
     marginTop: '5%',
-    alignItems: 'flex-start',
     marginHorizontal: '15%',
   },
   formRowView: {
+    alignItems: 'flex-start',
     marginBottom: '3%',
   },
   showPortfolioButtonView: {
     marginVertical: '8%',
+    marginHorizontal: '-5%',
   },
-  showPortfolioButton: {
-    paddingHorizontal: '8%',
-  }
 });
 
 const textStyles = StyleSheet.create({

@@ -35,7 +35,7 @@ class UserPortfolio extends React.Component {
   
   renderCompareButton() {
     return (
-      <View style={viewStyles.buttonContainer}>
+      <View style={viewStyles.compareButtonView}>
       <StyledButton
         title='Compare Your Portfolio'
         click={this.handleCompareButtonClick.bind(this)}
@@ -105,6 +105,9 @@ class UserPortfolio extends React.Component {
 const viewStyles = {
   formContainer: {
     alignItems: 'center'
+  },
+  compareButtonView: {
+    marginHorizontal: '18%',
   },
   changeButton: {
     marginTop: '2%',
