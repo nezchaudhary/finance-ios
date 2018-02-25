@@ -25,7 +25,6 @@ class DoughnutChart extends Component {
     const chartData = generateChartData(data);
     const header = getHeader(data.type, data.riskLevel, data.total);
       return (
-        // <ScrollView style={{ flex: 1 }}>
           <View style={viewStyles.mainContainer}>
             <View style={viewStyles.chartHeader}>
               <StyledText style={textStyles.chartHeader} text={header}></StyledText>
@@ -44,7 +43,6 @@ class DoughnutChart extends Component {
               <DoughnutLegend data={chartData}/>
             </View>
           </View>
-        // </ScrollView>
       );
   }
 }
@@ -60,8 +58,9 @@ const viewStyles = StyleSheet.create({
     marginTop: '2%',
   },
   legendContainer: {
+    flexDirection: 'row',
     marginTop: '5%',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     width: '92%',
   },
 });

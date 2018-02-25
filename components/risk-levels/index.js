@@ -70,34 +70,22 @@ const viewStyles = StyleSheet.create({
   mainContainer: { // top level container for component
     marginTop: 12,
     flexDirection: 'row',
-    // flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // width: '95%'
   },
   riskType: { // views for number 1 and 10
-    flex: 2,
+    flex: 1.5,
     marginTop: 5,
-    // alignItems: 'center',
+    alignItems: 'center',
   },
   sliderContainer: {  // slider container
     flex: 6,
-    // width: getWidthSizeForScreen(20, 300, 350),
-    // width: '98%',
-    // justifyContent: 'center',
-    // paddingHorizontal: 10
-
   },
   riskLevelIndicator: { // current risk level container
-    // flex: 0.7,
     alignItems: 'center',
-    // justifyContent: 'flex-start'
   }  
 });
 
 const textStyles = StyleSheet.create({
   riskLevel: { // text style for current risk level
-    //fontWeight: 'bold',
     marginTop: -8,
     fontSize: getWidthSizeForScreen(12, 13, 14),
   },

@@ -28,34 +28,38 @@ class HomePage extends Component {
 
   render() {
     return (
-      <ScrollView>
+      // <ScrollView>
         <View style={viewStyles.appContainer}>
-          <View style={viewStyles.logoContainer}>
-            <Text style={textStyles.logo}>
-              <StyledText style={textStyles.investiLogo} text='Investi' />
-              <StyledText style={textStyles.meLogo} text='Me' />
-            </Text>
+          <View style={viewStyles.titleContainer}>
+            <View style={viewStyles.titleTextContainer}>
+              <Text>
+                <StyledText style={textStyles.investiLogo} text='Investi' />
+                <StyledText style={textStyles.meLogo} text='Me' />
+              </Text>
+            </View>
           </View>
-          <View style={viewStyles.bodyContainer}>
-            <View style={viewStyles.headerContainer}>
-              <StyledText  
-                text="Compare your investment portfolio with a ideal investment portfolio for risk levels
-                  between 1-10"
-              />
+          <ScrollView>
+            <View style={viewStyles.bodyContainer}>
+              <View style={viewStyles.headerContainer}>
+                <StyledText  
+                  text="Compare your investment portfolio with a ideal investment portfolio for risk levels
+                    between 1-10"
+                />
+              </View>
+              <View style={viewStyles.riskLevelsContainer}>
+                <RiskLevels />
+              </View>
+              <View style={viewStyles.riskChartContainer}>
+                <DoughnutChart type={this.getRiskChartType()}/>
+              </View>
+              <View style={viewStyles.userPortfolioContainer}>
+                <UserPortfolio />
+              </View>
+              {this.renderPortfolioChangeData()}
             </View>
-            <View style={viewStyles.riskLevelsContainer}>
-              <RiskLevels />
-            </View>
-            <View style={viewStyles.riskChartContainer}>
-              <DoughnutChart type={this.getRiskChartType()}/>
-            </View>
-            <View style={viewStyles.userPortfolioContainer}>
-              <UserPortfolio />
-            </View>
-            {this.renderPortfolioChangeData()}
-          </View>
+          </ScrollView>
         </View>
-      </ScrollView> 
+      // </ScrollView> 
     );
   }
 }
@@ -68,42 +72,40 @@ const viewStyles = StyleSheet.create({
   bodyContainer: {
     paddingHorizontal,
   },
-  logoContainer: { // main logo container
+  titleContainer: { // main logo container
+    flexDirection: 'row',
     marginTop: '3%',
     borderStyle: 'solid',
     borderBottomColor: '#e6e6e6',
     borderBottomWidth: 0.5,
     alignItems: 'center',
-    width: '100%',
+  },
+  titleTextContainer: {
+    flex: 1,
+    marginTop: '4%',
+    marginBottom: '0.3%',
+    alignItems: 'center',
   },
   headerContainer: { // main header container
-    // flex: 1,
     marginTop: '5%',
     paddingHorizontal,
   },
   riskLevelsContainer: { // slider container
     flex: 1,
-    // width:'100%',
   },
   riskChartContainer: { // charts container
-    // flex: 4,
     marginTop: '5%',
   },
   userPortfolioContainer: { //user portfolio container
-    // flex: 1,
     marginTop: '5%',
   },
   portfolioChangeContainer: { // portfolio change data container
-    // flex: 1,
   },
 });
 
 const logoFontSize = getWidthSizeForScreen(22, 25, 30)
 
 const textStyles = StyleSheet.create({
-  logo: { // Main logo text box
-    marginTop: 12,
-  },
   investiLogo: { // 'investi' style
     fontSize: logoFontSize,
     color: '#96e1f2',
