@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
   },
   clearButtonText: {
     color: clearButtonTextColor,
+    fontWeight: 'bold',
   },
 });
 

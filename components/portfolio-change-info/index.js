@@ -28,8 +28,8 @@ class PortfolioChangeData extends Component {
             {changes.map((change, i) => {
               return (
                 <StyledText key={i} 
-                  text={`- Move $${formatDollarString(change.value)} from ${change.from} to ${change.to}`}
-                  style={textStyles.changeListItem} 
+                  text={`${'\u2022'} Move $${formatDollarString(change.value)} from ${change.from} to ${change.to}`}
+                  style={textStyles.changeListItem}
                 />
               )
             })}
@@ -60,7 +60,7 @@ const textStyles = StyleSheet.create({
   },
   changeListItem: {
     marginTop: '0.5%',
-    marginHorizontal: '10%',
+    marginHorizontal: '6.5%',
   }
 })
 

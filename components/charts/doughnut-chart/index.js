@@ -60,8 +60,6 @@ const viewStyles = StyleSheet.create({
   legendContainer: {
     flexDirection: 'row',
     marginTop: '5%',
-    // justifyContent: 'center',
-    width: '92%',
   },
 });
 

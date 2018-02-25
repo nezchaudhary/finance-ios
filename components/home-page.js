@@ -82,6 +82,7 @@ class HomePage extends Component {
 
 const viewStyles = StyleSheet.create({
   appContainer: { // top level container
+    // backgroundColor: '#ffe6ff',
     flex: 1,
     alignItems: 'center',
   },

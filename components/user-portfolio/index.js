@@ -48,8 +48,14 @@ class UserPortfolio extends React.Component {
     return (
       <View>
       <StyledButton
-      title="No Investments Found. Try Again"
+      title="No Investments Found" 
       click={this.handleTryAgainClick.bind(this)} 
+      clear={true}
+      />
+      <StyledButton
+        title="Try Again?"
+        click={this.handleTryAgainClick.bind(this)}
+        clear={true}
       />
       </View>
     )
@@ -101,7 +107,6 @@ const viewStyles = {
     alignItems: 'center'
   },
   changeButton: {
-    fontWeight: 'bold',
     marginTop: '2%',
   },
 }
