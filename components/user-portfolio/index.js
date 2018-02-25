@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
 import StyledButton from '../button';
@@ -57,11 +57,11 @@ class UserPortfolio extends React.Component {
   
   renderPortfolioForm() {
     return (
-      <View>
-      <StyledText
-        text="Please tell us your investments in USD"
-        style={{ fontWeight: 'bold' }}
-      />
+      <View style={viewStyles.formContainer}>
+        <StyledText
+          text="Please tell us your investments in USD"
+          style={textStyles.formTitle}
+        />
         <UserPortfolioForm 
           submit={this.handleFormSubmit.bind(this)} 
         />
@@ -95,10 +95,16 @@ class UserPortfolio extends React.Component {
 }
 
 const viewStyles = {
-  // buttonContainer: {
-  //   flex:1
-  // }
+  formContainer: {
+    alignItems: 'center'
+  }
 }
+
+const textStyles = StyleSheet.create({
+  formTitle: {
+    fontWeight: 'bold',
+  }
+})
 
 const mapStateToProps = (state) => {
   const { investmentTypes, userPortfolioTotal, userPortfolio } = state;

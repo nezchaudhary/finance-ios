@@ -8,6 +8,8 @@ import StyledButton from '../button';
 import StyledText from '../text/styled-text';
 import { updateUserPortfolio } from '../../actions/update-user-portfolio';
 import { updateUserPortfolioTotal } from '../../actions/update-user-portfolio-total';
+import { fontColor, borderColor, onFocusBorderColor } from '../../constants/styles';
+import { getWidthSizeForScreen } from '../../constants/layout';
 
 class UserPortfolioForm extends Component {
   constructor() {
@@ -44,14 +46,15 @@ class UserPortfolioForm extends Component {
   createInputFields() {
     return this.props.investmentTypes.map(field => {
       return (
-        <View key={field.name}>
+        <View style={viewStyles.formRowView} key={field.name}>
           <StyledText 
-            text={field.name}
-            style={{ fontWeight: 'bold' }}
+            text={`${field.name}:`}
+            style={textStyles.formRowLabel}
           />
           <TextInput
             onChangeText={(value => this.updateInput(field.name, value))}
             value={this.state[field.name]}
+            style={textStyles.formRowValue}
           />
         </View>
       );
@@ -60,17 +63,18 @@ class UserPortfolioForm extends Component {
 
   render() {
     return (
-      <KeyboardAwareScrollView
-        resetScrollToCoords={{ x: 0, y: 0 }}
-        scrollEnabled={false}>
-        <View style={styles.container}>
-        {this.createInputFields()}
-          <StyledButton 
-            title='Show Portfolio' 
-            click={this.handleSubmit.bind(this)} 
-          />
+      // <KeyboardAwareScrollView
+        // resetScrollToCoords={{ x: 0, y: 0 }}
+        // scrollEnabled={false}
+      // >
+        <View style={viewStyles.formBody}>
+            {this.createInputFields()}
+              <StyledButton 
+                title='Show Portfolio' 
+                click={this.handleSubmit.bind(this)} 
+              />
         </View>
-      </KeyboardAwareScrollView>
+      // </KeyboardAwareScrollView>
     );
   }
 }
@@ -79,36 +83,36 @@ const mapStateToProps = (state) => ({ investmentTypes: state.investmentTypes });
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({ updateUserPortfolio, updateUserPortfolioTotal }, dispatch)
 );
+
 export default connect(mapStateToProps, mapDispatchToProps)(UserPortfolioForm);
 
-var styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    marginTop: 50,
-    padding: 20,
-    backgroundColor: '#ffffff',
+const viewStyles = StyleSheet.create({
+  formBody: {
+    marginTop: '5%',
+    alignItems: 'flex-start',
+    marginHorizontal: '15%',
+  },
+  formRowView: {
+    marginBottom: '3%',
   }
-  // title: {
-  //   fontSize: 30,
-  //   alignSelf: 'center',
-  //   marginBottom: 30
-  // },
-  // buttonText: {
-  //   fontSize: 18,
-  //   color: 'white',
-  //   alignSelf: 'center'
-  // },
-  // button: {
-  //   height: 36,
-  //   backgroundColor: '#48BBEC',
-  //   borderColor: '#48BBEC',
-  //   borderWidth: 1,
-  //   borderRadius: 8,
-  //   marginBottom: 10,
-  //   alignSelf: 'stretch',
-  //   justifyContent: 'center'
-  // }
 });
+
+const textStyles = StyleSheet.create({
+  formRowLabel: {
+    fontWeight: 'bold',
+    textAlign: 'left',
+    marginVertical: '2%',
+  },
+  formRowValue: {
+    padding: '1%',
+    borderWidth: 1,
+    borderColor: borderColor,
+    color: fontColor,
+    width: 175,
+  }
+})
+
+
 
   // resetScrollToCoords={{ x: 0, y: 0 }}
         // scrollEnabled={false}

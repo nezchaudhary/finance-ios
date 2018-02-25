@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import RiskLevels from './risk-levels';
 import DoughnutChart from './charts/doughnut-chart';
@@ -39,6 +40,7 @@ class HomePage extends Component {
             </View>
           </View>
           <ScrollView>
+          <KeyboardAwareScrollView>
             <View style={viewStyles.bodyContainer}>
               <View style={viewStyles.headerContainer}>
                 <StyledText  
@@ -57,6 +59,7 @@ class HomePage extends Component {
               </View>
               {this.renderPortfolioChangeData()}
             </View>
+          </KeyboardAwareScrollView>
           </ScrollView>
         </View>
       // </ScrollView> 
