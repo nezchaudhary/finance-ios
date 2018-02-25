@@ -27,10 +27,7 @@ class DoughnutChart extends Component {
       return (
         <ScrollView style={{ flex: 1 }}>
           <View>
-            <StatusBar
-              hidden={true}
-            />
-            <StyledText style={{ fontWeight: 'bold' }} text={header}></StyledText>
+            <StyledText style={{ fontWeight: 'bold', }} text={header}></StyledText>
             <PieChart
               chart_wh={getWidthSizeForScreen(175, 200, 250)}
               series={chartData.values}

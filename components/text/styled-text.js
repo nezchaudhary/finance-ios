@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet } from 'react-native';
-import { fontColor, fontFamily } from '../../constants/styles';
+import { fontColor, fontFamily, fontSize } from '../../constants/styles';
  
 class RegularText extends Component {
   render() {
@@ -14,7 +14,8 @@ class RegularText extends Component {
 const style = StyleSheet.create({
   text: {
     color: fontColor,
-    fontFamily
+    fontFamily,
+    fontSize
   }
 });
 

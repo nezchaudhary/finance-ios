@@ -7,6 +7,8 @@ import DoughnutChart from './charts/doughnut-chart';
 import UserPortfolio from './user-portfolio';
 import StyledText from './text/styled-text';
 import PortfolioChangeInfo from './portfolio-change-info';
+import { getWidthSizeForScreen } from '../constants/layout';
+import { paddingHorizontal } from '../constants/styles';
 
 class HomePage extends Component {
   getRiskChartType() {
@@ -59,18 +61,27 @@ class HomePage extends Component {
 const viewStyles = StyleSheet.create({
   mainContainer: { // top level container
     flex: 1,
-    alignItems: 'center',
-    marginTop: 35,
-    backgroundColor: '#fff',
+    // alignItems: 'center'
   },
   logoContainer: { // main logo container
-    flex: 0.75
+    flex: 0.1,
+    marginTop: 12,
+    borderStyle: 'solid',
+    borderBottomColor: '#e6e6e6',
+    borderBottomWidth: 1,
+    paddingHorizontal,
   },
   headerContainer: { // main header container
-    flex: 0.2
+    flex: 0.2,
+    marginTop: 5,
+    paddingHorizontal
+    // marginHorizontal: 10
   },
   riskLevelsContainer: { // slider container
-    flex: 1
+    flex: 1,
+    paddingHorizontal,
+    alignItems: 'center',
+    marginTop: -8
   },
   riskChartContainer: { // charts container
     flex: 4
@@ -83,14 +94,20 @@ const viewStyles = StyleSheet.create({
   }
 });
 
+const logoFontSize = getWidthSizeForScreen(22, 25, 30)
+
 const textStyles = StyleSheet.create({
   logo: { // logo text 
-    fontSize: 35
+    marginTop: 12,
+    minWidth: '100%',
+    
   },
   investiLogo: {
+    fontSize: logoFontSize,
     color: '#96e1f2',
   },
   meLogo: {
+    fontSize: logoFontSize,
     color: '#4b81aa',
   },
 });

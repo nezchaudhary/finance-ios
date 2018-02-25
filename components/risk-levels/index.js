@@ -20,7 +20,7 @@ class RiskLevels extends Component {
       <View>
         <View style={viewStyles.mainContainer}>
           <View style={viewStyles.riskType}>
-            <StyledText stye={{ fontWeight: 'bold' }} text={'1'} />
+            <StyledText style={{ fontWeight: 'bold' }} text={'1'} />
             <StyledText text={'Low'} />
           </View>
           <View style={viewStyles.sliderContainer}>
@@ -39,14 +39,14 @@ class RiskLevels extends Component {
           </View>
           <View style={viewStyles.riskType}>
             <StyledText 
-              stye={{ fontWeight: 'bold'}} 
+              style={{ fontWeight: 'bold'}} 
               text={'10'} />
             <StyledText text={'High'} />
           </View>
         </View>
         <View style={viewStyles.riskLevelIndicator}>
           <StyledText
-            style={{ fontWeight: 'bold' }}
+            style={{ fontWeight: 'bold', marginTop: -12 }}
             text={`Risk Level: ${this.props.riskLevel}`}
           />
         </View>
@@ -70,22 +70,22 @@ const thumbStyle = {
 
 const viewStyles = StyleSheet.create({
   mainContainer: { // top level container for component
-    marginTop: 40,
+    marginTop: 12,
     flexDirection: 'row',
     flex: 0.80,
     justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'center',
-    width: getWidthSizeForScreen(300, 350, 400)
+    width: '95%'
   },
   riskType: { // views for number 1 and 10
     flex: 1,
-    justifyContent: 'flex-start',
+    // justifyContent: 'flex-start',
     alignItems: 'center',
   },
   sliderContainer: { 
     flex: 8,
     justifyContent: 'center',
+    paddingHorizontal: 10
 
   },
   riskLevelIndicator: {

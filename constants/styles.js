@@ -1,5 +1,9 @@
+import { getWidthSizeForScreen } from './layout';
+
 const fontColor = '#5195cc';
 const fontFamily = 'Trebuchet MS';
+const paddingHorizontal = '2.5%';
+const fontSize = getWidthSizeForScreen(13, 14, 16);
 
 const sliderStyles = {
   minTrackColor: '#d9d9d9',
@@ -10,5 +14,7 @@ const sliderStyles = {
 export {
   fontColor,
   fontFamily,
-  sliderStyles
+  sliderStyles,
+  fontSize,
+  paddingHorizontal
 };

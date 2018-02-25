@@ -16,5 +16,5 @@ const getWidthSizeForScreen = (for5, for678, forPlus) => {
 
 export {
   window,
-  getWidthSizeForScreen
+  getWidthSizeForScreen,
 }

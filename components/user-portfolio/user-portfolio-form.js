@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 
 import StyledButton from '../button';
 import StyledText from '../text/styled-text';
@@ -59,13 +61,15 @@ class UserPortfolioForm extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-      {this.createInputFields()}
-        <StyledButton 
-          title='Show Portfolio' 
-          click={this.handleSubmit.bind(this)} 
-        />
-      </View>
+      <KeyboardAwareScrollView>
+        <View style={styles.container}>
+        {this.createInputFields()}
+          <StyledButton 
+            title='Show Portfolio' 
+            click={this.handleSubmit.bind(this)} 
+          />
+        </View>
+      </KeyboardAwareScrollView>
     );
   }
 }
@@ -104,3 +108,6 @@ var styles = StyleSheet.create({
   //   justifyContent: 'center'
   // }
 });
+
+  // resetScrollToCoords={{ x: 0, y: 0 }}
+        // scrollEnabled={false}
