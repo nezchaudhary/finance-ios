@@ -28,20 +28,6 @@ class HomePage extends Component {
     return null;
   }
 
-  // renderPortfolioSize() {
-  //   if (this.props.userPortfolioTotal) {
-  //     return (
-  //       <View style={viewStyles.userPortfolioSize}>
-  //         <StyledText 
-  //           text={`Your Portfolio Size: $${formatDollarString(this.props.userPortfolioTotal)})`}
-  //           style={textStyles.userPortfolioSize}
-  //         />
-  //       </View>
-  //     );
-  //   }
-  //   return null;
-  // }
-
   render() {
     return (
       <View style={viewStyles.appContainer}>
