@@ -96,13 +96,14 @@ const textStyles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'left',
     marginVertical: '2%',
-  },
+  },  
   formRowValue: {
     padding: '1%',
     borderWidth: 1,
     borderColor: borderColor,
     color: fontColor,
-    width: 175,
+    width: getWidthSizeForScreen(175, 200, 225),
+    height: getWidthSizeForScreen(22, 24, 28), 
   }
 });
 

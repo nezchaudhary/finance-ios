@@ -76,6 +76,8 @@ class UserPortfolio extends React.Component {
         <StyledButton
           title="Change Portfolio"
           click={this.handleChangePortfolioClick.bind(this)}
+          clear={true}
+          style={{ fontWeight: 'bold' }}
           />
       </View>
     );

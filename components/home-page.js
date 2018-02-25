@@ -58,11 +58,10 @@ class HomePage extends Component {
                 <UserPortfolio />
               </View>
               {this.renderPortfolioChangeData()}
-            </View>
-          </KeyboardAwareScrollView>
+              </View>
+            </KeyboardAwareScrollView>
           </ScrollView>
         </View>
-      // </ScrollView> 
     );
   }
 }
