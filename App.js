@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, Platform, StyleSheet, Text, View } from 'react-native';
+import { StatusBar, Platform, StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
