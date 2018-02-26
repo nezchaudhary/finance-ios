@@ -28,15 +28,11 @@ class PortfolioChangeData extends Component {
     this.setState({ renderAgain: true });
   }
 
-
   renderListItem(item) {
-    // ${ '\u2022' }
-    console.log('change String', change)
     const change = item.item;
     return (
       <View
         style={viewStyles.changeListItemView}
-        // key={`${change.from} ${change.to} ${change.value}`}
       >
        <StyledText 
        text={`${'\u2022'}`}
@@ -50,13 +46,21 @@ class PortfolioChangeData extends Component {
       </View>
     )
   }
+  
+  getHeader(length) {
+    const changeHeader = "To match your portfolio to the risk portfolio:";
+    const noChangeHeader = "Your portfolio is match to your risk level, you do not need to make any changes";
+    return length ? changeHeader : noChangeHeader;
+  }
 
   render() {
     if (!this.props.userPortfolio && !this.props.userPortfolioTotal) return null;
+
     const changes = calculateHowToMoveInvestments(this.props.userPortfolio, RiskPortfolios[this.props.riskLevel]);
     changes.forEach(change => change.key = `${change.from} ${change.to} ${change.value}`);
-    const header = changes.length ? "To match your portfolio to the risk portfolio:" 
-      : "Your portfolio is match to your risk level, you do not need to make any changes";
+
+    const header = this.getHeader(changes.length);
+    
     return (
       <View>
         <StyledText
@@ -96,16 +100,12 @@ const textStyles = StyleSheet.create({
     marginBottom: '5%',
   },
   header: {
-    // fontStyle: 'italic',
     borderBottomWidth: 5,
     borderColor: 'black',
   },
   changeListItem: {
     flex: 1,
-    // marginVertical: '0.5%',
     marginHorizontal: '1.5%',
-    // fontWeight: 'normal',
-    // color: fontColor,
     textAlign: 'left',
   }
 })
@@ -120,4 +120,3 @@ const mapDispatchToProps = (dispatch) => (
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(PortfolioChangeData);
-// {changes.map((change, i) => {

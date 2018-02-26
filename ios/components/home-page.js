@@ -14,12 +14,24 @@ import formatDollarString from '../utility/format-dollar-string';
 
 
 class HomePage extends Component {
+  constructor() {
+    super(); 
+    this.state= {
+      renderPortfolioChange: false,
+    }
+  }
+
   getRiskChartType() {
+    console.log('tota', this.props.userPortfolioTotal);
     return this.props.userPortfolioTotal ? 'user-risk-portfolio' : 'risk-portfolio';
   }
 
+  updateRenderPortfolioChange(value) {
+    this.setState({ renderPortfolioChange : value });
+  }
+
   renderPortfolioChangeData() {
-    if (this.props.userPortfolioTotal) {
+    if (this.state.renderPortfolioChange) {
       return (
         <View style={viewStyles.portfolioChangeContainer}>
           <PortfolioChangeInfo />
@@ -40,11 +52,8 @@ class HomePage extends Component {
             </Text>
           </View>
         </View>
-        <ScrollView ref="scrollView">
-        <KeyboardAwareScrollView
-          // resetScrollToCoords={{ x: 0, y:0 }}
-          //   onKeyboardWillShow={() => this.refs.scrollView.scrollTo()}
-          >
+     
+        <KeyboardAwareScrollView extraHeight={100}>
           <View style={viewStyles.bodyContainer}>
             <View style={viewStyles.headerContainer}>
               <StyledText  
@@ -59,12 +68,11 @@ class HomePage extends Component {
               <DoughnutChart type={this.getRiskChartType()}/>
             </View>
             <View style={viewStyles.userPortfolioContainer}>
-              <UserPortfolio />
+              <UserPortfolio portfolioChange={this.updateRenderPortfolioChange.bind(this)} />
             </View>
             {this.renderPortfolioChangeData()}
             </View>
           </KeyboardAwareScrollView>
-        </ScrollView>
         </View>
     );
   }
@@ -72,13 +80,12 @@ class HomePage extends Component {
 
 const viewStyles = StyleSheet.create({
   appContainer: { // top level container
-    // backgroundColor: '#ffe6ff',
     flex: 1,
     alignItems: 'center',
   },
   bodyContainer: {
     paddingHorizontal,
-    marginBottom: '5%',
+    marginBottom: '10%',
   },
   titleContainer: { // main logo container
     flexDirection: 'row',

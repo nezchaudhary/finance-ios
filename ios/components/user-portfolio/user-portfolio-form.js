@@ -17,11 +17,19 @@ class UserPortfolioForm extends Component {
   }
 
   componentWillMount() {
-    this.props.investmentTypes.map(type => {
-      let value = this.props.userPortfolio ? this.props.userPortfolio[type.name] : '';
+    this.updateInputValues(this.props);
+  }
+
+  updateInputValues(props) {
+    props.investmentTypes.map(type => {
+      let value = props.userPortfolio ? props.userPortfolio[type.name] : '';
       this.state[type.name] = `$${value ? value : ''}`;
     });
   }
+
+  componentWillReceiveProps(newProps) {
+    this.updateInputValues(newProps);
+  };
 
   updateInput(type, input) {
     const value = input[0] === '$' ? input.slice(1) : input;
@@ -43,6 +51,19 @@ class UserPortfolioForm extends Component {
     this.props.submit();
   }
 
+  handleResetToOriginal() {
+    console.log('reset to original');
+  }
+
+  handleClearPortfolio() {
+    const portfolio = {};
+    for (let inv in this.props.investmentTypes) {
+      portfolio[inv] = 0;
+    }
+    this.props.updateUserPortfolio(portfolio);
+    this.props.updateUserPortfolioTotal(0);
+  }
+
   createInputFields() {
     return this.props.investmentTypes.map(field => {
       return (
@@ -55,6 +76,8 @@ class UserPortfolioForm extends Component {
             onChangeText={(value => this.updateInput(field.name, value))}
             value={this.state[field.name]}
             style={textStyles.formRowValue}
+            keyboardType='numeric'
+            returnKeyType="done"
           />
         </View>
       );
@@ -67,10 +90,19 @@ class UserPortfolioForm extends Component {
           {this.createInputFields()}
           <View style={viewStyles.showPortfolioButtonView}>
               <StyledButton 
-                ref='form'
                 title='Show Portfolio' 
                 click={this.handleSubmit.bind(this)} 
               />
+              <View style={viewStyles.resetButtonView}>
+              
+                <View>
+                  <StyledButton
+                    title='Clear'
+                    click={this.handleClearPortfolio.bind(this)}
+                    clear={true}
+                  />
+                </View>
+              </View>
             </View>
       </View>
     );
@@ -101,6 +133,9 @@ const viewStyles = StyleSheet.create({
     marginVertical: '8%',
     marginHorizontal: '-5%',
   },
+  resetButtonView: {
+    flexDirection: 'row',
+  }
 });
 
 const textStyles = StyleSheet.create({
@@ -116,13 +151,14 @@ const textStyles = StyleSheet.create({
     color: fontColor,
     width: getWidthSizeForScreen(175, 200, 225),
     height: getWidthSizeForScreen(22, 24, 28),
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 0,
-    // },
-    // shadowRadius: -2,
-    // shadowColor: '#bfbfbf',
-    // shadowOpacity: 0.2,
   }
 });
 
+
+// <View>
+//   <StyledButton
+//     title='Reset To Original'
+//     click={this.handleSubmit.bind(this)}
+//     clear={true}
+//   />
+// </View>

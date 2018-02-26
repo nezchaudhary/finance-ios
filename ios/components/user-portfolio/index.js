@@ -22,6 +22,7 @@ class UserPortfolio extends React.Component {
   }
   
   handleFormSubmit() {
+    this.props.portfolioChange(true);
     this.setState({ renderForm: false, renderChart: true });
   }
   
@@ -30,6 +31,7 @@ class UserPortfolio extends React.Component {
   }
 
   handleChangePortfolioClick() {
+    this.props.portfolioChange(false);
     this.setState({ renderForm: true, renderChart: false});
   }
   
