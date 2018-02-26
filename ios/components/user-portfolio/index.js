@@ -82,7 +82,7 @@ class UserPortfolio extends React.Component {
       <View>
         <DoughnutChart type='user-portfolio'/>
         <StyledButton
-          title="Change Portfolio"
+          title="Edit Portfolio"
           click={this.handleChangePortfolioClick.bind(this)}
           clear={true}
           style={viewStyles.changeButton}
