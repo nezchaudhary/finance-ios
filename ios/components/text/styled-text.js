@@ -2,21 +2,19 @@ import React, { Component } from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { fontColor, fontFamily, fontSize } from '../../constants/styles';
  
-class RegularText extends Component {
+export default class RegularText extends Component {
   render() {
     return (
-      <Text style={[style.text, this.props.style]}>
+      <Text style={[styles.text, this.props.style]}>
       {this.props.text}</Text>
     )
   }
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   text: {
     color: fontColor,
     fontFamily,
-    fontSize
-  }
+    fontSize,
+  },
 });
-
-export default RegularText;
