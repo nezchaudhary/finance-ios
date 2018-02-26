@@ -39,7 +39,7 @@ const viewStyles = StyleSheet.create({
 
 const textStyles = StyleSheet.create({
   itemData: {
-    fontSize: getWidthSizeForScreen(10.5, 11, 12),
+    fontSize: getWidthSizeForScreen(10.75, 12, 12),
     color: '#737373',
     // alignItems: 'baseline',
   },

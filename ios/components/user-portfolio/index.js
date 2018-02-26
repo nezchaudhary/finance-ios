@@ -48,18 +48,11 @@ class UserPortfolio extends React.Component {
   
   renderTryAgainButton() {
     return (
-      <View>
       <StyledButton
-      title="No Investments Found" 
+          title={`No Investments Found ${'\n'}          Try Again?`}     
       click={this.handleTryAgainClick.bind(this)} 
       clear={true}
       />
-      <StyledButton
-        title="Try Again?"
-        click={this.handleTryAgainClick.bind(this)}
-        clear={true}
-      />
-      </View>
     )
   }
   
@@ -112,7 +105,7 @@ const viewStyles = {
     marginHorizontal: '18%',
   },
   changeButton: {
-    marginTop: '2%',
+    marginTop: '1%',
   },
 }
 
@@ -128,3 +121,9 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(UserPortfolio);
+
+// <StyledButton
+//   title="Try Again?"
+//   click={this.handleTryAgainClick.bind(this)}
+//   clear={true}
+// />

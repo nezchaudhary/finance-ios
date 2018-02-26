@@ -10,7 +10,7 @@ import StyledText from '../text/styled-text';
 import StyledButton from '../button/';
 import { getWidthSizeForScreen } from '../../constants/layout';
 import { updateUserPortfolio } from '../../actions/update-user-portfolio';
-import { fontColor } from '../../constants/styles';
+import { fontColor, clearButtonTextColor } from '../../constants/styles';
 
 class PortfolioChangeData extends Component {
   constructor() {
@@ -36,6 +36,7 @@ class PortfolioChangeData extends Component {
       >
        <StyledText 
        text={`${'\u2022'}`}
+       style={textStyles.bulletPoint}
        />
         <StyledButton
           title={`Move $${formatDollarString(change.value)} from ${change.from} to ${change.to}`}
@@ -63,13 +64,17 @@ class PortfolioChangeData extends Component {
     const header = this.getHeader(changes.length);
     
     return (
-      <View>
+      <View style={viewStyles.portfolioChangeView}>
         <StyledText
-          style={[textStyles.portfolioChangeHeader, textStyles.portfolioSize]}
-          text={`Your portfolio size: $${formatDollarString(this.props.userPortfolioTotal)}`}
+          style={[textStyles.portfolioChangeText, textStyles.portfolioSize]}
+          text='Your Portfolio Size'
+        />
+        <StyledText
+          style={[textStyles.portfolioChangeText, textStyles.portfolioSizeNumber]}
+          text={`$${formatDollarString(this.props.userPortfolioTotal)}`}
         />
         <StyledText 
-          style={textStyles.portfolioChangeHeader} 
+          style={textStyles.portfolioChangeText} 
           text={header}
         />
         <FlatList
@@ -82,6 +87,9 @@ class PortfolioChangeData extends Component {
 }
 
 const viewStyles = StyleSheet.create({
+  portfolioChangeView: {
+    marginTop: '0.3%',
+  },
   changeListItemView: {
     alignItems: 'flex-start',
     flexDirection: 'row',
@@ -91,24 +99,29 @@ const viewStyles = StyleSheet.create({
 })
 
 const textStyles = StyleSheet.create({
-  portfolioChangeHeader: {
+  portfolioChangeText: {
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: '3.25%',
+    marginBottom: '2.25%',
+    fontSize: getWidthSizeForScreen(14, 15, 16),
   },
   portfolioSize: {
-    fontSize: getWidthSizeForScreen(14, 15, 16),
-    marginBottom: '5%',
+    // fontSize: getWidthSizeForScreen(14, 16, 18),
+    marginBottom: '1%',
   },
-  header: {
-    borderBottomWidth: 5,
-    borderColor: 'black',
+  portfolioSizeNumber: {
+    fontSize: getWidthSizeForScreen(16, 18, 20),
+    marginBottom: '3.5%',
   },
   changeListItem: {
     flex: 1,
     marginHorizontal: '1.5%',
     textAlign: 'left',
-  }
+    fontSize: getWidthSizeForScreen(13, 14.5, 15),
+  },
+  bulletPoint: {
+    color: clearButtonTextColor,
+  },
 })
 
 const mapStateToProps = (state) => {

@@ -65,10 +65,10 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontFamily,
-    fontSize: getWidthSizeForScreen(13, 14, 16),
+    fontSize: getWidthSizeForScreen(13, 15, 16),
   },
   regularButtonView: {
-    paddingVertical: getWidthSizeForScreen(10, 12, 15),
+    paddingVertical: '5%',
     paddingHorizontal: 0,
     backgroundColor: regularButtonBackgroundColor,
     borderRadius: 2,

@@ -30,7 +30,7 @@ class HomePage extends Component {
   }
 
   renderPortfolioChangeData() {
-    if (this.state.renderPortfolioChange) {
+    if (this.state.renderPortfolioChange && this.props.userPortfolioTotal) {
       return (
         <View style={viewStyles.portfolioChangeContainer}>
           <PortfolioChangeInfo />

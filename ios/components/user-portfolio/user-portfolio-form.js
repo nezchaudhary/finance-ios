@@ -97,9 +97,9 @@ class UserPortfolioForm extends Component {
               style={textStyles.clearButtonText}
             />
           </View>
-          <View style={viewStyles.showPortfolioButtonView}>
+          <View style={viewStyles.compareMyPortfolioButtonView}>
               <StyledButton 
-                title='Show Portfolio' 
+                title='Compare My Portfolio' 
                 click={this.handleSubmit.bind(this)} 
               />
             </View>
@@ -128,7 +128,7 @@ const viewStyles = StyleSheet.create({
     alignItems: 'flex-start',
     marginBottom: '3%',
   },
-  showPortfolioButtonView: {
+  compareMyPortfolioButtonView: {
     marginVertical: '8%',
     marginHorizontal: '-5%',
   },
@@ -153,7 +153,7 @@ const textStyles = StyleSheet.create({
     height: getWidthSizeForScreen(22, 24, 28),
   },
   clearButtonText: {
-    fontSize: 10,
+    fontSize: getWidthSizeForScreen(11, 12, 13),
     fontWeight: 'normal',
   }
 });

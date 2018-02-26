@@ -68,7 +68,7 @@ const thumbStyle = { // slider thumb style
 
 const viewStyles = StyleSheet.create({
   mainContainer: { // top level container for component
-    marginTop: 12,
+    marginTop: '1.5%',
     flexDirection: 'row',
   },
   riskType: { // views for number 1 and 10
@@ -87,10 +87,10 @@ const viewStyles = StyleSheet.create({
 const textStyles = StyleSheet.create({
   riskLevel: { // text style for current risk level
     marginTop: -8,
-    fontSize: getWidthSizeForScreen(12, 13, 14),
+    fontSize: getWidthSizeForScreen(12, 13.5, 14),
   },
   riskTypeText: { // text style for Low/High
-    fontSize: getWidthSizeForScreen(11, 12, 13),
+    fontSize: getWidthSizeForScreen(11, 12.5, 13),
   },
   riskTypeNumber: { // text style for number 1/10
     fontWeight: 'bold',
