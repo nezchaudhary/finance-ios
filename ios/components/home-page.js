@@ -58,6 +58,7 @@ class HomePage extends Component {
               <StyledText  
                 text="Compare your investment portfolio with a ideal investment portfolio for risk levels
                   between 1-10"
+                  style={textStyles.headerText}
               />
             </View>
             <View style={viewStyles.riskLevelsContainer}>
@@ -137,6 +138,9 @@ const textStyles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 15,
 
+  },
+  headerText: {
+    textAlign: 'center'
   }
 });
 
