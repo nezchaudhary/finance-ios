@@ -1,6 +1,6 @@
 import RiskLevelPortfolios from '../../../mock-data/risk-level-portfolios';
 import { calculateHowToMoveInvestments } from '../../../calculate-portfolio-shift';
-import formatDollarString from '../../../utility/format-dollar-string.js';
+import { formatDollarString } from '../../../utility/format-dollar-string.js';
 
 const createChartDataSet = (investments, percentages, portfolio) => {
   let label;

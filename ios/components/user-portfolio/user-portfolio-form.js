@@ -9,6 +9,7 @@ import { updateUserPortfolio } from '../../actions/update-user-portfolio';
 import { updateUserPortfolioTotal } from '../../actions/update-user-portfolio-total';
 import { fontColor, borderColor, onFocusBorderColor } from '../../constants/styles';
 import { getWidthSizeForScreen } from '../../constants/layout';
+import { formatDollarString, removeCommas } from '../../utility/format-dollar-string';
 
 class UserPortfolioForm extends Component {
   constructor() {
@@ -23,7 +24,7 @@ class UserPortfolioForm extends Component {
   updateInputValues(props) {
     props.investmentTypes.map(type => {
       let value = props.userPortfolio ? props.userPortfolio[type.name] : '';
-      this.state[type.name] = `$${value ? value : ''}`;
+      this.state[type.name] = `$${value ? formatDollarString(value) : '' }`;
     });
   }
 
@@ -32,8 +33,9 @@ class UserPortfolioForm extends Component {
   };
 
   updateInput(type, input) {
-    const value = input[0] === '$' ? input.slice(1) : input;
-    this.setState({ [type]: `$${value}` });
+    let value = input[0] === '$' ? input.slice(1) : input.slice();
+    value = removeCommas(value);
+    this.setState({ [type]: `$${formatDollarString(value)}` });
   }
 
   handleSubmit() {
@@ -41,6 +43,9 @@ class UserPortfolioForm extends Component {
     const payload = {};
     for (let type in this.state) {
       let amount = (this.state[type]).slice(1);
+      console.log('amount before is', amount);
+      amount = removeCommas(amount);
+      console.log('amount after', amount);
       amount = Number(amount) || 0;
       total += amount
       payload[type] = amount > 0 ? amount : 0;
@@ -49,10 +54,6 @@ class UserPortfolioForm extends Component {
     this.props.updateUserPortfolio(payload);
     this.props.updateUserPortfolioTotal(total);
     this.props.submit();
-  }
-
-  handleResetToOriginal() {
-    console.log('reset to original');
   }
 
   handleClearPortfolio() {

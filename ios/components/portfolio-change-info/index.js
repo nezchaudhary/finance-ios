@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import { calculateHowToMoveInvestments } from '../../calculate-portfolio-shift/index';
 import RiskPortfolios from '../../mock-data/risk-level-portfolios';
-import formatDollarString from '../../utility/format-dollar-string';
+import { formatDollarString } from '../../utility/format-dollar-string';
 import StyledText from '../text/styled-text';
 import StyledButton from '../button/';
 import { getWidthSizeForScreen } from '../../constants/layout';

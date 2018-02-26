@@ -10,7 +10,7 @@ import StyledText from './text/styled-text';
 import PortfolioChangeInfo from './portfolio-change-info';
 import { getWidthSizeForScreen } from '../constants/layout';
 import { paddingHorizontal } from '../constants/styles';
-import formatDollarString from '../utility/format-dollar-string';
+import { formatDollarString } from '../utility/format-dollar-string';
 
 
 class HomePage extends Component {
@@ -22,7 +22,6 @@ class HomePage extends Component {
   }
 
   getRiskChartType() {
-    console.log('tota', this.props.userPortfolioTotal);
     return this.props.userPortfolioTotal ? 'user-risk-portfolio' : 'risk-portfolio';
   }
 

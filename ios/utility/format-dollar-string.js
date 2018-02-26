@@ -15,4 +15,15 @@ const formatDollarString = (number) => {
   return result;
 }
 
-export default formatDollarString;
+const removeCommas = (value) => {
+  let parsed = '';
+  for (let i = 0; i < value.length; i++ ) {
+    if (value[i] !== ',') parsed += value[i];
+  }
+  return parsed;
+};
+
+export {
+  formatDollarString,
+  removeCommas,
+} 
