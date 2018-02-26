@@ -42,6 +42,7 @@ class PortfolioChangeData extends Component {
           style={textStyles.changeListItem}
           click={() => this.handleChangeItemClick(change)}
           clear={true}
+          onShowUnderlay={() => console.log()}
         />
       </View>
     )

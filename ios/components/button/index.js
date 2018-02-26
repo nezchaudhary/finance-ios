@@ -9,12 +9,31 @@ import {
 import { getWidthSizeForScreen } from '../../constants/layout';
 
 class StyledButton extends Component {
+  constructor() {
+    super();
+    this.state = {
+      pressed: false
+    }
+  }
+
+  onClickUnderLineClearText() {
+    this.setState({ pressed: true });
+  }
+
+  onHideRemoveUnderLineForClearText() {
+    this.setState({ pressed: false });
+  }
+
   getStyles() {
     let viewStyle;
     let textStyle;
     if (this.props.clear) {
       viewStyle = [styles.buttonView, styles.clearButtonView];
-      textStyle = [styles.buttonText, styles.clearButtonText];
+      textStyle = [
+        styles.buttonText,
+        styles.clearButtonText,
+        this.state.pressed ? styles.clearButtonTextPressed : styles.clearButtonTextNotPressed
+      ];
     } else {
       viewStyle = [styles.buttonView, styles.regularButtonView];
       textStyle = [styles.buttonText, styles.regularButtonText];
@@ -26,6 +45,8 @@ class StyledButton extends Component {
     const styles = this.getStyles();
     return (
       <TouchableHighlight 
+        onShowUnderlay= {this.props.clear ? this.onClickUnderLineClearText.bind(this) : null}
+        onHideUnderlay={this.props.clear ? this.onHideRemoveUnderLineForClearText.bind(this) : null}
         style={styles.viewStyle} 
         underlayColor={this.props.clear ? 'white' : '#0e4a71'}
         onPress={this.props.click}>
@@ -41,7 +62,6 @@ class StyledButton extends Component {
 const styles = StyleSheet.create({
   buttonView: {
     alignItems: 'center',
-    // marginHorizontal: getWidthSizeForScreen(50, 55, 60),
   },
   buttonText: {
     fontFamily,
@@ -50,7 +70,8 @@ const styles = StyleSheet.create({
   regularButtonView: {
     paddingVertical: getWidthSizeForScreen(10, 12, 15),
     paddingHorizontal: 0,
-    backgroundColor: regularButtonBackgroundColor
+    backgroundColor: regularButtonBackgroundColor,
+    borderRadius: 2,
   },
   regularButtonText: {
     color: regularButtonTextColor,
@@ -59,9 +80,17 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
     backgroundColor: 'white',
   },
+
   clearButtonText: {
     color: clearButtonTextColor,
     fontWeight: 'bold',
+    textDecorationLine: 'none',
+  },
+  clearButtonTextNotPressed: {
+    textDecorationLine: 'none',
+  },
+  clearButtonTextPressed: {
+    textDecorationLine: 'underline',
   },
 });
 
