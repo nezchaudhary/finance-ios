@@ -88,21 +88,19 @@ class UserPortfolioForm extends Component {
     return (
       <View style={viewStyles.formBody}>
           {this.createInputFields()}
+          <View style={viewStyles.clearButtonView}>
+            <StyledButton
+              title='Clear'
+              click={this.handleClearPortfolio.bind(this)}
+              clear={true}
+              style={textStyles.clearButtonText}
+            />
+          </View>
           <View style={viewStyles.showPortfolioButtonView}>
               <StyledButton 
                 title='Show Portfolio' 
                 click={this.handleSubmit.bind(this)} 
               />
-              <View style={viewStyles.resetButtonView}>
-              
-                <View>
-                  <StyledButton
-                    title='Clear'
-                    click={this.handleClearPortfolio.bind(this)}
-                    clear={true}
-                  />
-                </View>
-              </View>
             </View>
       </View>
     );
@@ -133,8 +131,9 @@ const viewStyles = StyleSheet.create({
     marginVertical: '8%',
     marginHorizontal: '-5%',
   },
-  resetButtonView: {
-    flexDirection: 'row',
+  clearButtonView: {
+    alignItems: 'flex-end',
+    // marginVertical: '3%',
   }
 });
 
@@ -151,6 +150,10 @@ const textStyles = StyleSheet.create({
     color: fontColor,
     width: getWidthSizeForScreen(175, 200, 225),
     height: getWidthSizeForScreen(22, 24, 28),
+  },
+  clearButtonText: {
+    fontSize: 10,
+    fontWeight: 'normal',
   }
 });
 
