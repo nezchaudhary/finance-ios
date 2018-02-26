@@ -8,7 +8,7 @@ import {
 
 import { getWidthSizeForScreen } from '../../constants/layout';
 
-class StyledButton extends Component {
+export default class StyledButton extends Component {
   constructor() {
     super();
     this.state = {
@@ -32,7 +32,7 @@ class StyledButton extends Component {
       textStyle = [
         styles.buttonText,
         styles.clearButtonText,
-        this.state.pressed ? styles.clearButtonTextPressed : styles.clearButtonTextNotPressed
+        this.state.pressed ? styles.clearButtonTextPressed : null
       ];
     } else {
       viewStyle = [styles.buttonView, styles.regularButtonView];
@@ -60,38 +60,38 @@ class StyledButton extends Component {
 };
 
 const styles = StyleSheet.create({
+  // all buttons view
   buttonView: {
     alignItems: 'center',
   },
+  // all buttons text style
   buttonText: {
     fontFamily,
     fontSize: getWidthSizeForScreen(13, 15, 16),
   },
+  // regular button view style
   regularButtonView: {
     paddingVertical: '5%',
     paddingHorizontal: 0,
     backgroundColor: regularButtonBackgroundColor,
     borderRadius: 2,
   },
+  // regular button text style
   regularButtonText: {
     color: regularButtonTextColor,
   },
+  // clear button view style
   clearButtonView: {
     paddingVertical: 0,
     backgroundColor: 'white',
   },
-
+  // clear button text style
   clearButtonText: {
     color: clearButtonTextColor,
     fontWeight: 'bold',
-    textDecorationLine: 'none',
   },
-  clearButtonTextNotPressed: {
-    textDecorationLine: 'none',
-  },
+  // clear button pressed style
   clearButtonTextPressed: {
     textDecorationLine: 'underline',
   },
 });
-
-export default StyledButton;
