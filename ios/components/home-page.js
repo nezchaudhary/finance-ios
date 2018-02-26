@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { connect } from 'react-redux';
+import { StyleSheet, Text, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { connect } from 'react-redux';
 
 import RiskLevels from './risk-levels';
 import DoughnutChart from './charts/doughnut-chart';
@@ -43,7 +43,8 @@ class HomePage extends Component {
   render() {
     return (
       <View style={viewStyles.appContainer}>
-        <View style={viewStyles.titleContainer}>
+        
+      <View style={viewStyles.titleContainer}>
           <View style={viewStyles.titleTextContainer}>
             <Text>
               <StyledText style={textStyles.investiLogo} text='Investi' />
@@ -54,7 +55,7 @@ class HomePage extends Component {
      
         <KeyboardAwareScrollView extraHeight={100}>
           <View style={viewStyles.bodyContainer}>
-            <View style={viewStyles.headerContainer}>
+            <View style={viewStyles.headerViewContainer}>
               <StyledText  
                 text="Compare your investment portfolio with a ideal investment portfolio for risk levels
                   between 1-10"
@@ -68,26 +69,25 @@ class HomePage extends Component {
               <DoughnutChart type={this.getRiskChartType()}/>
             </View>
             <View style={viewStyles.userPortfolioContainer}>
-              <UserPortfolio portfolioChange={this.updateRenderPortfolioChange.bind(this)} />
+              <UserPortfolio updatePortfolioChange={this.updateRenderPortfolioChange.bind(this)} />
             </View>
             {this.renderPortfolioChangeData()}
             </View>
           </KeyboardAwareScrollView>
+          
         </View>
     );
   }
 }
 
 const viewStyles = StyleSheet.create({
-  appContainer: { // top level container
+  // top level container
+  appContainer: { 
     flex: 1,
     alignItems: 'center',
   },
-  bodyContainer: {
-    paddingHorizontal,
-    marginBottom: '10%',
-  },
-  titleContainer: { // main logo container
+  // logo container
+  titleContainer: {
     flexDirection: 'row',
     marginTop: '3%',
     borderStyle: 'solid',
@@ -101,23 +101,29 @@ const viewStyles = StyleSheet.create({
     marginBottom: '0.3%',
     alignItems: 'center',
   },
-  headerContainer: { // main header container
+  bodyContainer: {
+    paddingHorizontal,
+    marginBottom: '10%',
+  },
+  // header statement container
+  headerViewContainer: {
     marginTop: '5%',
     paddingHorizontal,
   },
-  riskLevelsContainer: { // slider container
+  // slider container
+  riskLevelsContainer: {
     flex: 1,
   },
-  riskChartContainer: { // charts container
+  // risk chart container
+  riskChartContainer: {
     marginTop: '2%',
   },
-  userPortfolioContainer: { //user portfolio container
+  // user portfolio container
+  userPortfolioContainer: {
     marginTop: '5%',
   },
-  userPortfolioSize: {
-    marginTop: '5%',
-  },
-  portfolioChangeContainer: { // portfolio change data container
+  // portfolio change data container
+  portfolioChangeContainer: { 
     marginTop: '5%',
   },
 });
@@ -125,20 +131,17 @@ const viewStyles = StyleSheet.create({
 const logoFontSize = getWidthSizeForScreen(22, 25, 30)
 
 const textStyles = StyleSheet.create({
-  investiLogo: { // 'investi' style
+  // 'investi' style
+  investiLogo: { 
     fontSize: logoFontSize,
     color: '#96e1f2',
   },
-  meLogo: { // 'me' style
+  // 'me' style
+  meLogo: { 
     fontSize: logoFontSize,
     color: '#4b81aa',
   },
-  userPortfolioSize: {
-    fontWeight: 'bold',
-    textAlign: 'center',
-    fontSize: 15,
-
-  },
+  // main header text style
   headerText: {
     textAlign: 'center'
   }
