@@ -25,6 +25,12 @@ class HomePage extends Component {
     return this.props.userPortfolioTotal ? 'user-risk-portfolio' : 'risk-portfolio';
   }
 
+  getRiskChartHeader() {
+    return this.props.userPortfolioTotal 
+      ? `Your Ideal Level ${this.props.riskLevel} Portfolio` 
+      : `Risk ${this.props.riskLevel} Portfolio`;
+  }
+
   updateRenderPortfolioChange(value) {
     this.setState({ renderPortfolioChange : value });
   }
@@ -66,7 +72,9 @@ class HomePage extends Component {
               <RiskLevels />
             </View>
             <View style={viewStyles.riskChartContainer}>
-              <DoughnutChart type={this.getRiskChartType()}/>
+              <DoughnutChart 
+              type={this.getRiskChartType()}
+              header={this.getRiskChartHeader()}/>
             </View>
             <View style={viewStyles.userPortfolioContainer}>
               <UserPortfolio updatePortfolioChange={this.updateRenderPortfolioChange.bind(this)} />
@@ -148,8 +156,8 @@ const textStyles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-  const { userPortfolioTotal } = state;
-  return { userPortfolioTotal };
+  const { userPortfolioTotal, riskLevel } = state;
+  return { userPortfolioTotal, riskLevel };
 };
 
 export default connect(mapStateToProps)(HomePage);

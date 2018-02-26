@@ -21,7 +21,7 @@ class PortfolioChangeData extends Component {
   }
 
   handleChangeItemClick(change) {
-    const updatedPortfolio = Object.assign(this.props.userPortfolio);
+    const updatedPortfolio = Object.assign({}, this.props.userPortfolio);
     updatedPortfolio[change.from] -= change.value;
     updatedPortfolio[change.to] += change.value;
     this.props.updateUserPortfolio(updatedPortfolio);

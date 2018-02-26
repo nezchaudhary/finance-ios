@@ -73,7 +73,9 @@ class UserPortfolio extends React.Component {
   renderUserChart() {
     return (
       <View>
-        <DoughnutChart type='user-portfolio'/>
+        <DoughnutChart 
+        type='user-portfolio'
+          header='Your Current Portfolio'/>
         <StyledButton
           title="Edit Portfolio"
           click={this.handleChangePortfolioClick.bind(this)}

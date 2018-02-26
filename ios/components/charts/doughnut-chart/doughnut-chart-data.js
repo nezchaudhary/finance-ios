@@ -16,53 +16,45 @@ const createChartDataSet = (investments, percentages, portfolio) => {
   }, { labels: [], colors: [], values: [] });
 }
 
+const getPercentages = (portfolio, total) => {
+  return portfolio.map(value => Math.round((value / total) * 100));
+};
+
+const calculateIdealRiskUserPortfolio = (userPortfolio, idealRiskPortfolio) => {
+  
+}
+
 const generateChartData = (data) => {
+  
+  // data needed for function
   const { riskLevel, userPortfolio, userPortfolioValues, total, type, investments } = data;
   const riskValues = Object.values(RiskLevelPortfolios[riskLevel]);
   const riskPortfolio = RiskLevelPortfolios[riskLevel];
   let chartData;
-  if (type === 'risk-portfolio') {
-    chartData = createChartDataSet(investments, riskValues);
+
+  // chart data for risk, user and user risk if total was 0 
+  if (type === 'risk-portfolio' || type === 'user-portfolio' || (type === 'user-risk-portfolio' && !total)) {
+    let percentages = type === 'user-portfolio' ? getPercentages(userPortfolioValues, total) : riskValues;
+    let portfolio = type === 'user-portfolio' ? userPortfolioValues : null;
+    chartData = createChartDataSet(investments, percentages, portfolio);
+  
   } else {
-    if (type === 'user-risk-portfolio') {
-      if (!total) {
-        chartData = createChartDataSet(investments, riskValues);
-      } else {
-        const changes = calculateHowToMoveInvestments(userPortfolio, riskPortfolio);
-        const portfolio = investments.reduce((result, type, i) => {
-          result[type.name] = userPortfolioValues[i];
-          return result;
-        }, {});
-        changes.map(change => {
-          portfolio[change.from] -= change.value;
-          portfolio[change.to] += change.value;
-        });
-        const adjustedPortfolio = Object.values(portfolio);
-        const percentages = adjustedPortfolio.map(value => Math.round((value / total) * 100));
-        chartData = createChartDataSet(investments, percentages, adjustedPortfolio);
-      }
-    } else if (type === 'user-portfolio') {
-      const percentages = userPortfolioValues.map(value => Math.round((value / total) * 100));
-      chartData = createChartDataSet(investments, percentages, userPortfolioValues);
-    }
+
+    // Calculate ideal risk portfolio for user when portfolio is provided
+    const changes = calculateHowToMoveInvestments(userPortfolio, riskPortfolio);
+    const portfolio = Object.assign({}, userPortfolio);
+    changes.map(change => {
+      portfolio[change.from] -= change.value;
+      portfolio[change.to] += change.value;
+    });
+    const adjustedPortfolio = Object.values(portfolio);
+    const percentages = getPercentages(adjustedPortfolio, total);
+    chartData = createChartDataSet(investments, percentages, adjustedPortfolio);
   }
   return chartData;
-}
-
-const getHeader = (type, level, total) => {
-  if (type === 'risk-portfolio') {
-    return `Risk ${level} Portfolio`;
-  } else if (type === 'user-portfolio') {
-    return 'Your Current Portfolio';
-  } else if (type === 'user-risk-portfolio' && total) {
-    return `Your Ideal Level ${level} Portfolio`;
-  } else if (type === 'user-risk-portfolio' && !total) {
-    return `Risk ${level} Portfolio`;
-  }
 }
 
 export {
   generateChartData,
   createChartDataSet,
-  getHeader
 }

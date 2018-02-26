@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import StyledText from '../../text/styled-text';
 import DoughnutLegend from './doughnut-legend';
 import RiskLevelPortfolios from '../../../mock-data/risk-level-portfolios';
-import { generateChartData, generateChartDataObject, getHeader } from './doughnut-chart-data';
+import { generateChartData, generateChartDataObject } from './doughnut-chart-data';
 import { getWidthSizeForScreen } from '../../../constants/layout';
 
 class DoughnutChart extends Component {
@@ -23,11 +23,10 @@ class DoughnutChart extends Component {
   render() {
     const data = this.collectData();
     const chartData = generateChartData(data);
-    const header = getHeader(data.type, data.riskLevel, data.total);
       return (
           <View style={viewStyles.mainContainer}>
             <View style={viewStyles.chartHeader}>
-              <StyledText style={textStyles.chartHeader} text={header}></StyledText>
+              <StyledText style={textStyles.chartHeader} text={this.props.header}></StyledText>
             </View>
             <View style={viewStyles.chartContainer}>
               <PieChart
