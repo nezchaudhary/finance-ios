@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import AppSlider from '../slider/';
-import StyledText from '../text/styled-text';
+import StyledText from '../styled-components/text/styled-text';
 import { updateRiskLevel } from '../../actions/update-risk-level';
 import { getWidthSizeForScreen } from '../../constants/layout';
 

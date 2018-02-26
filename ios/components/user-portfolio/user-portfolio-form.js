@@ -3,8 +3,8 @@ import { StyleSheet, View, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import StyledButton from '../button';
-import StyledText from '../text/styled-text';
+import StyledButton from '../styled-components/button';
+import StyledText from '../styled-components/text/styled-text';
 import { updateUserPortfolio } from '../../actions/update-user-portfolio';
 import { updateUserPortfolioTotal } from '../../actions/update-user-portfolio-total';
 import { fontColor, borderColor } from '../../constants/styles';
@@ -26,6 +26,10 @@ class UserPortfolioForm extends Component {
       let value = props.userPortfolio ? props.userPortfolio[type.name] : '';
       this.state[type.name] = `$${value ? formatDollarString(value) : '' }`;
     });
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.updateInputValues(newProps);
   }
 
   updateInput(type, input) {

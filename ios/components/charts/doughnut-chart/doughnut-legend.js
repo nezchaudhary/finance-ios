@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import StyledText from '../../text/styled-text';
+import StyledText from '../../styled-components/text/styled-text';
 import { getWidthSizeForScreen } from '../../../constants/layout';
 
 export default class DoughnutLegend extends Component {

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
-import StyledButton from '../button';
-import StyledText from '../text/styled-text';
+import StyledButton from '../styled-components/button';
+import StyledText from '../styled-components/text/styled-text';
 import DoughnutChart from '../charts/doughnut-chart'
 import UserPortfolioForm from './user-portfolio-form';
 

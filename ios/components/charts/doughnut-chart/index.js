@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import PieChart from 'react-native-pie-chart';
 import { connect } from 'react-redux';
 
-import StyledText from '../../text/styled-text';
+import StyledText from '../../styled-components/text/styled-text';
 import DoughnutLegend from './doughnut-legend';
 import RiskLevelPortfolios from '../../../mock-data/risk-level-portfolios';
 import { generateChartData, generateChartDataObject } from './doughnut-chart-data';

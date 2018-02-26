@@ -4,9 +4,9 @@ import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { 
   fontColor, fontFamily, clearButtonTextColor, 
   regularButtonBackgroundColor, regularButtonTextColor  
-} from '../../constants/styles';
+} from '../../../constants/styles';
 
-import { getWidthSizeForScreen } from '../../constants/layout';
+import { getWidthSizeForScreen } from '../../../constants/layout';
 
 export default class StyledButton extends Component {
   constructor() {

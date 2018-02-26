@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import RiskLevels from './risk-levels';
 import DoughnutChart from './charts/doughnut-chart';
 import UserPortfolio from './user-portfolio';
-import StyledText from './text/styled-text';
+import StyledText from './styled-components/text/styled-text';
 import PortfolioChangeInfo from './portfolio-change-info';
 import { getWidthSizeForScreen } from '../constants/layout';
 import { paddingHorizontal } from '../constants/styles';
