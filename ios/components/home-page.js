@@ -12,6 +12,7 @@ import { getWidthSizeForScreen } from '../constants/layout';
 import { paddingHorizontal } from '../constants/styles';
 import formatDollarString from '../utility/format-dollar-string';
 
+
 class HomePage extends Component {
   getRiskChartType() {
     return this.props.userPortfolioTotal ? 'user-risk-portfolio' : 'risk-portfolio';
@@ -39,8 +40,11 @@ class HomePage extends Component {
             </Text>
           </View>
         </View>
-        <ScrollView>
-        <KeyboardAwareScrollView>
+        <ScrollView ref="scrollView">
+        <KeyboardAwareScrollView
+          // resetScrollToCoords={{ x: 0, y:0 }}
+          //   onKeyboardWillShow={() => this.refs.scrollView.scrollTo()}
+          >
           <View style={viewStyles.bodyContainer}>
             <View style={viewStyles.headerContainer}>
               <StyledText  

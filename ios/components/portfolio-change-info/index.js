@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -28,10 +28,34 @@ class PortfolioChangeData extends Component {
     this.setState({ renderAgain: true });
   }
 
+
+  renderListItem(item) {
+    // ${ '\u2022' }
+    console.log('change String', change)
+    const change = item.item;
+    return (
+      <View
+        style={viewStyles.changeListItemView}
+        // key={`${change.from} ${change.to} ${change.value}`}
+      >
+       <StyledText 
+       text={`${'\u2022'}`}
+       />
+        <StyledButton
+          title={`Move $${formatDollarString(change.value)} from ${change.from} to ${change.to}`}
+          style={textStyles.changeListItem}
+          click={() => this.handleChangeItemClick(change)}
+          clear={true}
+        />
+      </View>
+    )
+  }
+
   render() {
     if (!this.props.userPortfolio && !this.props.userPortfolioTotal) return null;
     const changes = calculateHowToMoveInvestments(this.props.userPortfolio, RiskPortfolios[this.props.riskLevel]);
-    const header = changes.length ? "To match your portfolio to the risk portfolio.." 
+    changes.forEach(change => change.key = `${change.from} ${change.to} ${change.value}`);
+    const header = changes.length ? "To match your portfolio to the risk portfolio:" 
       : "Your portfolio is match to your risk level, you do not need to make any changes";
     return (
       <View>
@@ -43,21 +67,10 @@ class PortfolioChangeData extends Component {
           style={textStyles.portfolioChangeHeader} 
           text={header}
         />
-        {changes.map((change, i) => {
-          return (
-            <View 
-              style={viewStyles.changeListItemView}
-              key={`${change.from} ${change.to} ${change.value}`}
-            >
-              <StyledButton key={`${change.from} ${change.to} ${change.value}`} 
-                title={`${'\u2022'} Move $${formatDollarString(change.value)} from ${change.from} to ${change.to}`}
-                style={textStyles.changeListItem}
-                click={() => this.handleChangeItemClick(change)}
-                clear={true}
-              />
-            </View>
-          )
-        })}
+        <FlatList
+          data={changes}
+          renderItem={(change) => this.renderListItem(change)}
+        />
       </View>
     );
   }
@@ -66,24 +79,33 @@ class PortfolioChangeData extends Component {
 const viewStyles = StyleSheet.create({
   changeListItemView: {
     alignItems: 'flex-start',
-  }
+    flexDirection: 'row',
+    marginHorizontal: '10%',
+    marginVertical: '0.5%',
+  },
 })
 
 const textStyles = StyleSheet.create({
   portfolioChangeHeader: {
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: '0.5%',
+    marginBottom: '3.25%',
   },
   portfolioSize: {
     fontSize: getWidthSizeForScreen(14, 15, 16),
-    marginBottom: '2%',
+    marginBottom: '5%',
+  },
+  header: {
+    // fontStyle: 'italic',
+    borderBottomWidth: 5,
+    borderColor: 'black',
   },
   changeListItem: {
-    marginTop: '0.5%',
-    marginHorizontal: '6.5%',
-    fontWeight: 'normal',
-    color: fontColor,
+    flex: 1,
+    // marginVertical: '0.5%',
+    marginHorizontal: '1.5%',
+    // fontWeight: 'normal',
+    // color: fontColor,
     textAlign: 'left',
   }
 })
@@ -98,3 +120,4 @@ const mapDispatchToProps = (dispatch) => (
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(PortfolioChangeData);
+// {changes.map((change, i) => {

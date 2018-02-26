@@ -3,8 +3,8 @@ import { StatusBar, Platform, StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-import reducers from './reducers';
-import HomePage from './components/home-page';
+import reducers from './ios/reducers';
+import HomePage from './ios/components/home-page';
 
 const store = createStore(reducers);
 
@@ -26,8 +26,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   statusBarUnderlay: {
     height: 24,

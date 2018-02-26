@@ -67,6 +67,7 @@ class UserPortfolioForm extends Component {
           {this.createInputFields()}
           <View style={viewStyles.showPortfolioButtonView}>
               <StyledButton 
+                ref='form'
                 title='Show Portfolio' 
                 click={this.handleSubmit.bind(this)} 
               />
@@ -110,17 +111,18 @@ const textStyles = StyleSheet.create({
   },  
   formRowValue: {
     padding: '1%',
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderColor: borderColor,
     color: fontColor,
     width: getWidthSizeForScreen(175, 200, 225),
     height: getWidthSizeForScreen(22, 24, 28),
-    shadowOffset: {
-      width: 0.2,
-      height: 0.2,
-    },
-    shadowColor: '#bfbfbf',
-    shadowOpacity: 0.2,
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 0,
+    // },
+    // shadowRadius: -2,
+    // shadowColor: '#bfbfbf',
+    // shadowOpacity: 0.2,
   }
 });
 
