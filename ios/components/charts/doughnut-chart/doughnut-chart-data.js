@@ -14,18 +14,20 @@ const createChartDataSet = (investments, percentages, portfolio) => {
     }
     return data;
   }, { labels: [], colors: [], values: [] });
-}
+};
 
 const getPercentages = (portfolio, total) => {
   return portfolio.map(value => Math.round((value / total) * 100));
 };
 
-const calculateIdealRiskUserPortfolio = (userPortfolio, idealRiskPortfolio) => {
-  
-}
+const updateValuesForIdealRiskPortfolio = (portfolio, changes) => {
+  changes.map(change => {
+    portfolio[change.from] -= change.value;
+    portfolio[change.to] += change.value;
+  });
+};
 
 const generateChartData = (data) => {
-  
   // data needed for function
   const { riskLevel, userPortfolio, userPortfolioValues, total, type, investments } = data;
   const riskValues = Object.values(RiskLevelPortfolios[riskLevel]);
@@ -39,22 +41,18 @@ const generateChartData = (data) => {
     chartData = createChartDataSet(investments, percentages, portfolio);
   
   } else {
-
     // Calculate ideal risk portfolio for user when portfolio is provided
     const changes = calculateHowToMoveInvestments(userPortfolio, riskPortfolio);
     const portfolio = Object.assign({}, userPortfolio);
-    changes.map(change => {
-      portfolio[change.from] -= change.value;
-      portfolio[change.to] += change.value;
-    });
+    updateValuesForIdealRiskPortfolio(portfolio, changes);
     const adjustedPortfolio = Object.values(portfolio);
     const percentages = getPercentages(adjustedPortfolio, total);
     chartData = createChartDataSet(investments, percentages, adjustedPortfolio);
   }
   return chartData;
-}
+};
 
 export {
   generateChartData,
   createChartDataSet,
-}
+};
