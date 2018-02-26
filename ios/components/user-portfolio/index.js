@@ -49,24 +49,18 @@ class UserPortfolio extends React.Component {
   renderTryAgainButton() {
     return (
       <StyledButton
-          title={`No Investments Found ${'\n'}          Try Again?`}     
-      click={this.handleTryAgainClick.bind(this)} 
-      clear={true}
+        title={`No Investments Found ${'\n'}          Try Again?`}     
+        click={this.handleTryAgainClick.bind(this)} 
+        clear={true}
       />
     )
   }
   
   renderPortfolioForm() {
     return (
-      <View style={viewStyles.formContainer}>
-        <StyledText
-          text="Please tell us your investments in USD"
-          style={textStyles.formTitle}
-        />
-        <UserPortfolioForm 
-          submit={this.handleFormSubmit.bind(this)} 
-        />
-      </View>
+      <UserPortfolioForm 
+        submit={this.handleFormSubmit.bind(this)} 
+      />
     )
   }
 
@@ -74,13 +68,13 @@ class UserPortfolio extends React.Component {
     return (
       <View>
         <DoughnutChart 
-        type='user-portfolio'
+          type='user-portfolio'
           header='Your Current Portfolio'/>
         <StyledButton
           title="Edit Portfolio"
           click={this.handleChangePortfolioClick.bind(this)}
           clear={true}
-          style={viewStyles.changeButton}
+          style={viewStyles.editPortfolioButton}
           />
       </View>
     );
@@ -100,22 +94,13 @@ class UserPortfolio extends React.Component {
 }
 
 const viewStyles = {
-  formContainer: {
-    alignItems: 'center'
-  },
   compareButtonView: {
     marginHorizontal: '18%',
   },
-  changeButton: {
+  editPortfolioButton: {
     marginTop: '1%',
   },
-}
-
-const textStyles = StyleSheet.create({
-  formTitle: {
-    fontWeight: 'bold',
-  }
-})
+};
 
 const mapStateToProps = (state) => {
   const { investmentTypes, userPortfolioTotal, userPortfolio } = state;
@@ -123,9 +108,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(UserPortfolio);
-
-// <StyledButton
-//   title="Try Again?"
-//   click={this.handleTryAgainClick.bind(this)}
-//   clear={true}
-// />
