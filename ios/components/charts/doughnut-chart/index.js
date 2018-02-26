@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ScrollView, StatusBar } from 'react-native';
-import { connect } from 'react-redux';
+import { StyleSheet, View } from 'react-native';
 import PieChart from 'react-native-pie-chart';
+import { connect } from 'react-redux';
 
 import StyledText from '../../text/styled-text';
 import DoughnutLegend from './doughnut-legend';
@@ -36,7 +36,6 @@ class DoughnutChart extends Component {
                 sliceColor={chartData.colors}
                 doughnut={true}
                 coverRadius={0.45}
-                coverFill={'#FFF'}
               />
             </View>
             <View style={viewStyles.legendContainer}>
@@ -48,15 +47,19 @@ class DoughnutChart extends Component {
 }
 
 const viewStyles = StyleSheet.create({
-  mainContainer: { // main component view style
+  // top level container for component
+  mainContainer: { 
     alignItems: 'center',
     marginTop: '2%',
   },
-  chartHeader: { // chart header view style
+  // chart header view
+  chartHeader: { 
   },
-  chartContainer: { // main chart view style
+  // chart view 
+  chartContainer: { 
     marginTop: '2%',
   },
+  // chart legend container view
   legendContainer: {
     flexDirection: 'row',
     marginTop: '5%',
@@ -64,7 +67,8 @@ const viewStyles = StyleSheet.create({
 });
 
 const textStyles = StyleSheet.create({
-  chartHeader: { // chart header text style
+  // chart header text style
+  chartHeader: { 
     fontWeight: 'bold',
     fontSize: getWidthSizeForScreen(14, 16, 17),
   },

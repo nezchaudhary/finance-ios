@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+
 import StyledText from '../../text/styled-text';
 import { getWidthSizeForScreen } from '../../../constants/layout';
 
-class DoughnutLegend extends Component {
+export default class DoughnutLegend extends Component {
   render() {
     return (
       <View>
@@ -11,7 +12,7 @@ class DoughnutLegend extends Component {
             {this.props.data.labels.map((value, index) => {
               const backgroundColor = `${this.props.data.colors[index]}`;
               return (
-                <View style={textStyles.legendItem} key={value}>
+                <View style={viewStyles.legendItem} key={value}>
                   <View style={[viewStyles.itemColor, { backgroundColor } ]}></View>
                   <StyledText style={textStyles.itemData} text={` ${value}`} /> 
                 </View>
@@ -24,6 +25,7 @@ class DoughnutLegend extends Component {
 }
 
 const viewStyles = StyleSheet.create({
+  // Legend items container view
   legendItems: {
     flex: 6,
     flexDirection: 'row',
@@ -31,6 +33,13 @@ const viewStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  // legend item main box view
+  legendItem: {
+    flexDirection: 'row',
+    paddingRight: '4%',
+    paddingBottom: '1%',
+  },
+  // legend item color box
   itemColor: {
     width: getWidthSizeForScreen(25, 30, 40),
     height: getWidthSizeForScreen(10, 12, 15),
@@ -38,16 +47,9 @@ const viewStyles = StyleSheet.create({
 });
 
 const textStyles = StyleSheet.create({
+  // legend item text
   itemData: {
     fontSize: getWidthSizeForScreen(10.75, 12, 12),
     color: '#737373',
-    // alignItems: 'baseline',
   },
-  legendItem: {
-    flexDirection: 'row',
-    paddingRight: '4%',
-    paddingBottom: '1%',
-  }
 });
-
-export default DoughnutLegend;
