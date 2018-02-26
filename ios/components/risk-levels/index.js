@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import AppSlider from '../slider/';
 import StyledText from '../text/styled-text';
-import { sliderStyles } from '../../constants/styles';
 import { updateRiskLevel } from '../../actions/update-risk-level';
 import { getWidthSizeForScreen } from '../../constants/layout';
 
@@ -15,32 +14,30 @@ class RiskLevels extends Component {
     this.props.updateRiskLevel(1);
   }
 
+  renderSliderInputValues(number, text) {
+    return (
+      <View style={viewStyles.riskTypeView}>
+        <StyledText style={textStyles.riskTypeNumber} text={number} />
+        <StyledText style={textStyles.riskTypeText} text={text} />
+      </View>
+    )
+  }
+
   render() {
     return (
       <View>
         <View style={viewStyles.mainContainer}>
-          <View style={viewStyles.riskType}>
-            <StyledText style={textStyles.riskTypeNumber} text={'1'} />
-            <StyledText style={textStyles.riskTypeText} text={'Low'} />
-          </View>
+         {this.renderSliderInputValues(1, 'Low')}
           <View style={viewStyles.sliderContainer}>
             <AppSlider 
               minimumValue={1}
               maximumValue={10}
               step={1}
-              minimumTrackTintColor={sliderStyles.minTrackColor}
-              maximumTrackTintColor={sliderStyles.maxTrackColor}
-              thumbTintColor={sliderStyles.thumbColor}
-              trackStyle={trackStyle}
-              thumbStyle={thumbStyle}
               value={this.props.riskLevel} 
               onValueChange={this.props.updateRiskLevel} 
             />
           </View>
-          <View style={viewStyles.riskType}>
-            <StyledText style={textStyles.riskTypeNumber} text={'10'} />
-            <StyledText style={textStyles.riskTypeText} text={'High'} />
-          </View>
+          {this.renderSliderInputValues(10, 'High')}
         </View>
         <View style={viewStyles.riskLevelIndicator}>
           <StyledText
@@ -53,46 +50,40 @@ class RiskLevels extends Component {
   }
 }
 
-const trackStyle = { // slider track style
-  height: 8,
-  borderRadius: 5,
-  backgroundColor: '#d0d0d0',
-};
-
-const thumbStyle = { // slider thumb style
-  width: 10,
-  height: 20,
-  borderRadius: 5,
-  backgroundColor: '#5195cc',
-}
-
 const viewStyles = StyleSheet.create({
-  mainContainer: { // top level container for component
+  // top level container for component
+  mainContainer: { 
     marginTop: '1.5%',
     flexDirection: 'row',
   },
-  riskType: { // views for number 1 and 10
+  // views for number 1 and 10
+  riskTypeView: { 
     flex: 1.5,
     marginTop: 5,
     alignItems: 'center',
   },
-  sliderContainer: {  // slider container
+   // slider container
+  sliderContainer: { 
     flex: 6,
   },
-  riskLevelIndicator: { // current risk level container
+  // current risk level container
+  riskLevelIndicator: { 
     alignItems: 'center',
   }  
 });
 
 const textStyles = StyleSheet.create({
-  riskLevel: { // text style for current risk level
+  // text style for current risk level
+  riskLevel: { 
     marginTop: -8,
     fontSize: getWidthSizeForScreen(12, 13.5, 14),
   },
-  riskTypeText: { // text style for Low/High
-    fontSize: getWidthSizeForScreen(11, 12.5, 13),
+  // text style for Low/High
+  riskTypeText: { 
+    fontSize: getWidthSizeForScreen(11, 12.5, 13.5),
   },
-  riskTypeNumber: { // text style for number 1/10
+  // text style for number 1/10
+  riskTypeNumber: { 
     fontWeight: 'bold',
   },
 })
