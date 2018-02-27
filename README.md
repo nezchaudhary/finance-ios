@@ -1,9 +1,10 @@
 ## Finance-IOS
-This application displays a doughnut chart for different level-risk portfolios and custom portfolios. You can compare custom portfolios to the risk portfolio. It will tell you how to adjust investments to match the risk portfolio. Click on the adjustments to see the change take on your portfolio.
+This project displays a doughnut chart for different level-risk portfolios and custom portfolios. You can compare custom portfolios to the risk portfolio. It will tell you how to adjust investments to match the risk portfolio. Click on the adjustments to see the change take on your portfolio.
 
 ## Official Published Application
+You can view the project by scanning the QR Code below with the [Expo Client](https://itunes.apple.com/us/app/expo-client/id982107779?mt=8) Application
 
-#### Link To Application
+#### Link To Project
 https://exp.host/@nehacp/finance-ios
 
 #### QR Code
@@ -27,7 +28,9 @@ Watch a demo of the app [here](https://youtu.be/oHEFiRYLG9s)
 
 ### Instructions
 
-To use the application, you will need Expo, Node, Watchman, and XCode. XCode is to use the IOS Simulator in development mode. Follow instructions [here](https://docs.expo.io/versions/latest/introduction/installation.html) to download all dependencies and then clone as a git repository or download as a zip file.
+To modify the project, you will need Expo, Node, Watchman, and XCode. XCode is used to view the project on the IOS Simulator in development mode on a computer. Follow instructions [here](https://docs.expo.io/versions/latest/introduction/installation.html) to download all dependencies.
+
+Then clone as a git repository or download as a zip file.
 
 #### Dependencies
 
@@ -42,19 +45,19 @@ To use the application, you will need Expo, Node, Watchman, and XCode. XCode is 
 
 #### Scripts
 
-##### To install dependencies
+##### To install project dependencies
 
 Once you download/clone the application to your local computer, go into the repository root folder in the terminal. To install all the dependencies, run the command:
 
 `npm install`
 
-##### Link Dependencies
+##### Link Dependencies To React-Native
 
 Then you need to link all your dependencies to React-Native. Run:
 
 ```react-native link```
 
-##### To start application
+##### To Start Project
 
 After all the dependencies are installed, you need to run:
 
