@@ -27,7 +27,7 @@
 
 ###  Execution Time
 
-- About 23 hours of work to put the whole project together.
+- About 20-24 hours of work to put the whole project together including research time.
 
 ### Possible Optimizations
 
