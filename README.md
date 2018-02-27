@@ -70,5 +70,5 @@ This will runs the app in the development mode. You can now scan the QR code pro
 ## Files and Structure
 
 - The entry point javascript file is [App.js](https://github.com/nehacp/finance-ios/blob/master/App.js) in the 'ios' folder.
-- All of the components are under [ios/components](https://github.com/nehacp/finance-ios/tree/master/ios/components).
+- All of the components are under [ios/components](https://github.com/nehacp/finance-ios/tree/master/ios/components)
 - The algorithm to calculate the change needed in the portfolio is [here](https://github.com/nehacp/finance-ios/blob/master/ios/calculate-portfolio-shift/index.js).
