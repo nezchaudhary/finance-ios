@@ -10,7 +10,7 @@ import StyledText from '../styled-components/text/styled-text';
 import StyledButton from '../styled-components/button/';
 import { getWidthSizeForScreen } from '../../constants/layout';
 import { updateUserPortfolio } from '../../actions/update-user-portfolio';
-import { fontColor, clearButtonTextColor } from '../../constants/styles';
+import { clearButtonTextColor } from '../../constants/styles';
 
 class PortfolioChangeData extends Component {
   constructor() {
@@ -28,19 +28,25 @@ class PortfolioChangeData extends Component {
     this.setState({ renderAgain: true });
   }
 
+  getHeader(length) {
+    const changeHeader = "To match your portfolio to the risk portfolio:";
+    const noChangeHeader = "Your portfolio is match to your risk level, you do not need to make any changes";
+    return length ? changeHeader : noChangeHeader;
+  }
+
   renderListItem(item) {
     const change = item.item;
     return (
       <View
         style={viewStyles.changeListItemView}
       >
-       <StyledText 
-       text={`${'\u2022'}`}
-       style={textStyles.bulletPoint}
-       />
+        <StyledText
+          text={`${'\u2022'}`}
+          style={textStyles.bulletPoint}
+        />
         <StyledButton
           title={`Move $${formatDollarString(change.value)} from ${change.from} to ${change.to}`}
-          style={textStyles.changeListItem}
+          style={textStyles.changeListItemValue}
           click={() => this.handleChangeItemClick(change)}
           clear={true}
           onShowUnderlay={() => console.log()}
@@ -48,11 +54,14 @@ class PortfolioChangeData extends Component {
       </View>
     )
   }
-  
-  getHeader(length) {
-    const changeHeader = "To match your portfolio to the risk portfolio:";
-    const noChangeHeader = "Your portfolio is match to your risk level, you do not need to make any changes";
-    return length ? changeHeader : noChangeHeader;
+
+  renderText(text, styles) {
+    return (
+      <StyledText
+        style={styles}
+        text={text}
+      />
+    );
   }
 
   render() {
@@ -64,19 +73,12 @@ class PortfolioChangeData extends Component {
     const header = this.getHeader(changes.length);
     
     return (
-      <View style={viewStyles.portfolioChangeView}>
-        <StyledText
-          style={[textStyles.portfolioChangeText, textStyles.portfolioSize]}
-          text='Your Portfolio Size'
-        />
-        <StyledText
-          style={[textStyles.portfolioChangeText, textStyles.portfolioSizeNumber]}
-          text={`$${formatDollarString(this.props.userPortfolioTotal)}`}
-        />
-        <StyledText 
-          style={textStyles.portfolioChangeText} 
-          text={header}
-        />
+      <View style={viewStyles.mainContainer}>
+      {this.renderText('Your Portfolio Size', [textStyles.portfolioChangeText, textStyles.portfolioSizeTitle])}
+      {this.renderText(`$${formatDollarString(this.props.userPortfolioTotal)}`, 
+        [textStyles.portfolioChangeText, textStyles.portfolioSizeNumber]
+      )}
+      {this.renderText(header, textStyles.portfolioChangeText)}
         <FlatList
           data={changes}
           renderItem={(change) => this.renderListItem(change)}
@@ -87,9 +89,11 @@ class PortfolioChangeData extends Component {
 }
 
 const viewStyles = StyleSheet.create({
-  portfolioChangeView: {
+  // top level container for component
+  mainContainer: {
     marginTop: '0.3%',
   },
+  // Change list item View
   changeListItemView: {
     alignItems: 'flex-start',
     flexDirection: 'row',
@@ -99,26 +103,30 @@ const viewStyles = StyleSheet.create({
 })
 
 const textStyles = StyleSheet.create({
+  // text for whole component
   portfolioChangeText: {
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: '2.25%',
     fontSize: getWidthSizeForScreen(14, 15, 16),
   },
-  portfolioSize: {
-    // fontSize: getWidthSizeForScreen(14, 16, 18),
+  // text for portfolio size title
+  portfolioSizeTitle: {
     marginBottom: '1%',
   },
+  // portfolio size number style
   portfolioSizeNumber: {
     fontSize: getWidthSizeForScreen(16, 18, 20),
     marginBottom: '3.5%',
   },
-  changeListItem: {
+  // list item text style
+  changeListItemValue: {
     flex: 1,
     marginHorizontal: '1.5%',
     textAlign: 'left',
     fontSize: getWidthSizeForScreen(13, 14.5, 15),
   },
+  // bullet point text style
   bulletPoint: {
     color: clearButtonTextColor,
   },

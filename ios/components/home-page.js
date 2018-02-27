@@ -9,7 +9,6 @@ import UserPortfolio from './user-portfolio';
 import StyledText from './styled-components/text/styled-text';
 import PortfolioChangeInfo from './portfolio-change-info';
 import { getWidthSizeForScreen } from '../constants/layout';
-import { paddingHorizontal } from '../constants/styles';
 import { formatDollarString } from '../utility/format-dollar-string';
 
 
@@ -110,13 +109,13 @@ const viewStyles = StyleSheet.create({
     alignItems: 'center',
   },
   bodyContainer: {
-    paddingHorizontal,
+    paddingHorizontal: '2.5%',
     marginBottom: '10%',
   },
   // header statement container
   headerViewContainer: {
     marginTop: '5%',
-    paddingHorizontal,
+    paddingHorizontal: '2.5%',
   },
   // slider container
   riskLevelsContainer: {
