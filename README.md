@@ -70,4 +70,4 @@ This will runs the app in the development mode. You can now scan the QR code pro
 
 #### Image
 
-![finance-ios](https://github.com/nehacp/finance-ios/blob/master/assets/finance-ios.png "Finance-IOS")
+[Project Screenshot](https://github.com/nehacp/finance-ios/blob/master/assets/finance-ios.png "Finance-IOS")
