@@ -1,15 +1,15 @@
 ## Finance-IOS
 This application displays a doughnut chart for different level-risk portfolios and custom portfolios. You can compare custom portfolios to the risk portfolio. It will tell you how to adjust investments to match the risk portfolio. Click on the adjustments to see the change take on your portfolio.
 
-### Official Published application
+## Official Published Application
 
 #### Link
-[Finance-IOS](https://exp.host/@nehacp/finance-ios)
+https://exp.host/@nehacp/finance-ios
 
 #### QR Code
 
 Scan this QR Code with the Expo mobile ios application to view it on your mobile device
-[QR Code](https://github.com/nehacp/finance-ios/blob/master/assets/QR%20Code.png "QR Code")
+![QR Code](https://github.com/nehacp/finance-ios/blob/master/assets/QR%20Code.png "QR Code")
 
 #### Image
 
