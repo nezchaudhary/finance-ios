@@ -3,7 +3,7 @@ This application displays a doughnut chart for different level-risk portfolios a
 
 ## Official Published Application
 
-#### Link
+#### Link To Application
 https://exp.host/@nehacp/finance-ios
 
 #### QR Code
