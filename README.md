@@ -8,8 +8,8 @@ https://exp.host/@nehacp/finance-ios
 
 #### QR Code
 
-Scan this QR Code with the Expo mobile ios application to view it on your mobile device
-![QR Code](https://github.com/nehacp/finance-ios/blob/master/assets/QR%20Code.png "QR Code")
+Scan this QR Code with the Expo mobile application to open project immediately on your mobile device
+![QR Code](https://github.com/nehacp/finance-ios/blob/master/assets/qr-code.png "QR Code")
 
 #### Image
 
