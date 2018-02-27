@@ -18,10 +18,9 @@
 
 
 ##  Execution Time
-About 23 hours of work to put together the whole project.
+About 23 hours of work to put the whole project together.
 
 ### Possible Optimizations
 
 - Make charts animated and responsive to touch and touch of the corresponding legend data.
-
 - Add Testing.

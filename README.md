@@ -7,7 +7,7 @@ This application displays a doughnut chart for different level-risk portfolios a
 
 This project was built in the Expo XDE environment. It is strictly an IOS application only. It is compatible with iPhone 5 and above.
 
-Read the application and execution summary [here](https://github.com/nehacp/finance-ui/blob/master/summary.md)
+Read the application and execution summary [here](https://github.com/nehacp/finance-ios/blob/master/summary.md)
 
 ### Video
 
@@ -15,7 +15,7 @@ Watch a demo of the app [here](https://youtu.be/4C0ZBM7eWnw)
 
 ### Instructions
 
-To use the application, you will need Node, Watchman, and XCode if you want to use the IOS Simulator. Follow instructions [here](https://docs.expo.io/versions/latest/introduction/installation.html) to download all dependencies. Clone as a git repository or download as a zip file.
+To use the application, you will need Expo, Node, Watchman, and XCode. XCode is to use the IOS Simulator in development mode. Follow instructions [here](https://docs.expo.io/versions/latest/introduction/installation.html) to download all dependencies and then clone as a git repository or download as a zip file.
 
 #### Dependencies
 
@@ -36,6 +36,11 @@ Once you download/clone the application to your local computer, go into the repo
 
 `npm install`
 
+##### Link Dependencies
+
+Then you need to link all your dependencies to React-Native. Run:
+
+```react-native link```
 
 ##### To start application
 
@@ -43,7 +48,7 @@ After all the dependencies are installed, you need to run:
 
 `exp start`
 
-This will runs the app in the development mode.You can now scan the QR code provided in the command line or use the link to go to running app in development mode. Alternatively you can use the Expo XDE to open the application in the IOS Simulator.
+This will runs the app in the development mode. You can now scan the QR code provided in the command line or use the link to go to running app on your mobile device. You can use the Expo XDE with XCOde to open the application in the IOS Simulator on your computer.
 
 
 ### Files and Structure
