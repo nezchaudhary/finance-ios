@@ -8,8 +8,9 @@ import DoughnutChart from './charts/doughnut-chart';
 import UserPortfolio from './user-portfolio';
 import StyledText from './styled-components/text/styled-text';
 import PortfolioChangeInfo from './portfolio-change-info';
-import { getWidthSizeForScreen } from '../constants/layout';
+// import { getWidthSizeForScreen } from '../constants/layout';
 import { formatDollarString } from '../utility/format-dollar-string';
+import { logoStyles } from '../constants/styles';
 
 
 class HomePage extends Component {
@@ -98,7 +99,7 @@ const viewStyles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: '3%',
     borderStyle: 'solid',
-    borderBottomColor: '#e6e6e6',
+    borderBottomColor: logoStyles.borderBottomColor,
     borderBottomWidth: 0.5,
     alignItems: 'center',
   },
@@ -135,18 +136,16 @@ const viewStyles = StyleSheet.create({
   },
 });
 
-const logoFontSize = getWidthSizeForScreen(22, 25, 30)
-
 const textStyles = StyleSheet.create({
   // 'investi' style
   investiLogo: { 
-    fontSize: logoFontSize,
-    color: '#96e1f2',
+    fontSize: logoStyles.fontSize,
+    color: logoStyles.investiColor,
   },
   // 'me' style
   meLogo: { 
-    fontSize: logoFontSize,
-    color: '#4b81aa',
+    fontSize: logoStyles.fontSize,
+    color: logoStyles.meColor,
   },
   // main header text style
   headerText: {
