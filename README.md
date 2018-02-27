@@ -1,7 +1,8 @@
 ## Finance-IOS
 This application displays a doughnut chart for different level-risk portfolios and custom portfolios. You can compare custom portfolios to the risk portfolio. It will tell you how to adjust investments to match the risk portfolio. Click on the adjustments to see the change take on your portfolio.
 
-![finance-ios](https://github.com/nehacp/finance-ui/blob/master/finance-ui-image.png "Finance-ios")
+![finance-ios](https://github.com/nehacp/finance-ios/blob/master/assets/Finance-IOS%20-%20Image%20(1).png "Finance-ios-1")
+![finance-ios](https://github.com/nehacp/finance-ios/blob/master/assets/Finance-IOS%20-%20Image%20(2).png "Finance-ios-2")
 
 ### Application and Execution Summary
 
