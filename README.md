@@ -14,19 +14,20 @@ Scan this QR Code with the Expo mobile application to open project immediately o
 
 #### Image
 
-[Project Screenshot](https://github.com/nehacp/finance-ios/blob/master/assets/finance-ios.png "Finance-IOS")
-
-### Application and Execution Summary
-
-This project was built in the Expo XDE environment. It is strictly an IOS application only. It is compatible with iPhone 5 and above.
-
-Read the application and execution summary [here](https://github.com/nehacp/finance-ios/blob/master/summary.md)
+See a screenshot of the projec [here](https://github.com/nehacp/finance-ios/blob/master/assets/finance-ios.png "Finance-IOS")
 
 ### Video
 
 Watch a demo of the app [here](https://youtu.be/oHEFiRYLG9s)
 
-### Instructions
+## Project Execution Summary
+
+This project was built in the Expo XDE environment. It is strictly an IOS application only. It is compatible with iPhone 5 and above.
+
+Read the application and execution summary [here](https://github.com/nehacp/finance-ios/blob/master/summary.md)
+
+
+## Instructions To Download and Modify
 
 To modify the project, you will need Expo, Node, Watchman, and XCode. XCode is used to view the project on the IOS Simulator in development mode on a computer. Follow instructions [here](https://docs.expo.io/versions/latest/introduction/installation.html) to download all dependencies.
 
@@ -66,7 +67,7 @@ After all the dependencies are installed, you need to run:
 This will runs the app in the development mode. You can now scan the QR code provided in the command line or use the link to go to running app on your mobile device. You can use the Expo XDE with XCode to open the application in the IOS Simulator on your computer.
 
 
-### Files and Structure
+## Files and Structure
 
 - The entry point javascript file is [App.js](https://github.com/nehacp/finance-ios/blob/master/App.js) in the 'ios' folder.
 - All of the components are under [ios/components](https://github.com/nehacp/finance-ios/tree/master/ios/components).
