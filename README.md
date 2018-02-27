@@ -60,11 +60,22 @@ Then you need to link all your dependencies to React-Native. Run:
 
 ##### To Start Project
 
-After all the dependencies are installed, you need to run:
+After all the dependencies are installed, to start the application in development from the command line,  you can run:
 
 `exp start`
 
-This will runs the app in the development mode. You can now scan the QR code provided in the command line or use the link provided to view the running development application on your mobile device. You can use the Expo XDE with XCode to open the application in the IOS Simulator on your computer.
+You can now scan the QR code or use the link provided in the command line with you Expo Client Application on your mobile phone to view the running development application.
+
+
+OR 
+
+To start the application using the Expo XDE:
+
+Download the Expo XDE on your local computer and click on open project and find the path to source directory.
+
+You can find the link or QR Code when you click 'Share' on the Expo XDE to open the application on your mobile device.
+
+You can also use the Expo XDE with XCode to open the application in the IOS Simulator on your computer.
 
 
 ## Files and Structure
