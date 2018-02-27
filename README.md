@@ -14,7 +14,7 @@ Scan this QR Code with the Expo mobile application to open project immediately o
 
 #### Image
 
-See a screenshot of the projec [here](https://github.com/nehacp/finance-ios/blob/master/assets/finance-ios.png "Finance-IOS")
+See a screenshot of the project [here](https://github.com/nehacp/finance-ios/blob/master/assets/finance-ios.png "Finance-IOS")
 
 ### Video
 
@@ -64,7 +64,7 @@ After all the dependencies are installed, you need to run:
 
 `exp start`
 
-This will runs the app in the development mode. You can now scan the QR code provided in the command line or use the link to go to running app on your mobile device. You can use the Expo XDE with XCode to open the application in the IOS Simulator on your computer.
+This will runs the app in the development mode. You can now scan the QR code provided in the command line or use the link provided to view the running development application on your mobile device. You can use the Expo XDE with XCode to open the application in the IOS Simulator on your computer.
 
 
 ## Files and Structure
