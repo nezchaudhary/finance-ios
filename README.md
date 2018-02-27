@@ -1,7 +1,19 @@
 ## Finance-IOS
 This application displays a doughnut chart for different level-risk portfolios and custom portfolios. You can compare custom portfolios to the risk portfolio. It will tell you how to adjust investments to match the risk portfolio. Click on the adjustments to see the change take on your portfolio.
 
-![finance-ios](https://github.com/nehacp/finance-ios/blob/master/assets/Finance-IOS%20-%20Image%20(1).png "Finance-ios-1")
+### Official Published application
+
+#### Link
+[Finance-IOS](https://exp.host/@nehacp/finance-ios)
+
+#### QR Code
+
+Scan this QR Code with the Expo mobile ios application to view it on your mobile device
+[QR Code](https://github.com/nehacp/finance-ios/blob/master/assets/QR%20Code.png "QR Code")
+
+#### Image
+
+![finance-ios](https://github.com/nehacp/finance-ios/blob/master/assets/finance-ios.png "Finance-IOS")
 
 ### Application and Execution Summary
 
@@ -48,11 +60,11 @@ After all the dependencies are installed, you need to run:
 
 `exp start`
 
-This will runs the app in the development mode. You can now scan the QR code provided in the command line or use the link to go to running app on your mobile device. You can use the Expo XDE with XCOde to open the application in the IOS Simulator on your computer.
+This will runs the app in the development mode. You can now scan the QR code provided in the command line or use the link to go to running app on your mobile device. You can use the Expo XDE with XCode to open the application in the IOS Simulator on your computer.
 
 
 ### Files and Structure
 
-- The entry point javascript file is [App.js](https://github.com/nehacp/finance-ios/blob/master/App.js) in the 'src' folder.
+- The entry point javascript file is [App.js](https://github.com/nehacp/finance-ios/blob/master/App.js) in the 'ios' folder.
 - All of the components are under [ios/components](https://github.com/nehacp/finance-ios/tree/master/ios/components).
 - The algorithm to calculate the change needed in the portfolio is [here](https://github.com/nehacp/finance-ios/blob/master/ios/calculate-portfolio-shift/index.js).
