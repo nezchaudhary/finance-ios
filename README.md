@@ -1,11 +1,11 @@
 ## Finance-ios
-This application displays a doughnut chart for different level-risk portfolios and custom portfolios. You can compare custom portfolios to the risk portfolio. It will tell you how to adjust investments to match the risk portfolio. Click on the adjustments to see them effect the change to your portfolio.
+This application displays a doughnut chart for different level-risk portfolios and custom portfolios. You can compare custom portfolios to the risk portfolio. It will tell you how to adjust investments to match the risk portfolio. Click on the adjustments to see the change take on your portfolio.
 
 ![finance-ios](https://github.com/nehacp/finance-ui/blob/master/finance-ui-image.png "Finance-ios")
 
 ### Application and Execution Summary
 
-This project was built in the Expo XDE environment. The main reason for the choice was project deadline. The main focus was to add features, CSS and responsiveness.
+This project was built in the Expo XDE environment. It is strictly an IOS application only. It is compatible with iPhone 5 and above.
 
 Read the application and execution summary [here](https://github.com/nehacp/finance-ui/blob/master/summary.md)
 
@@ -48,9 +48,6 @@ This will runs the app in the development mode.You can now scan the QR code prov
 
 ### Files and Structure
 
-
-- The entry point javascript file is [App.js](https://github.com/nehacp/finance-ui/blob/master/src/index.js) in the 'src' folder.
-- All of the components are under [src/components](https://github.com/nehacp/finance-ui/blob/master/src/components).
-- The CSS files for each component are in the same folder as the component.
-- The algorithm to calculate the change needed in the portfolio is [here](https://github.com/nehacp/finance-ui/blob/master/src/calculate-portfolio-shift/index.js).
-- The test suite is in the [__tests__](https://github.com/nehacp/finance-ui/blob/master/src/__tests__) folder in 'src'. It has a limited number of tests.
+- The entry point javascript file is [App.js](https://github.com/nehacp/finance-ios/blob/master/App.js) in the 'src' folder.
+- All of the components are under [ios/components](https://github.com/nehacp/finance-ios/tree/master/ios/components).
+- The algorithm to calculate the change needed in the portfolio is [here](https://github.com/nehacp/finance-ios/blob/master/ios/calculate-portfolio-shift/index.js).
