@@ -2,7 +2,7 @@
 
 ### Limitations
 
-- Compatibility: iPhone 5 and above
+- Compatibility: iPhone 5 and above.
 - Orientation: Portrait Only.
 - Language: English only.
 - Currency: USD only.

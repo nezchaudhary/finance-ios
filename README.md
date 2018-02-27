@@ -12,10 +12,6 @@ https://exp.host/@nehacp/finance-ios
 Scan this QR Code with the Expo mobile application to open project immediately on your mobile device
 ![QR Code](https://github.com/nehacp/finance-ios/blob/master/assets/qr-code.png "QR Code")
 
-#### Image
-
-![finance-ios](https://github.com/nehacp/finance-ios/blob/master/assets/finance-ios.png "Finance-IOS")
-
 ### Application and Execution Summary
 
 This project was built in the Expo XDE environment. It is strictly an IOS application only. It is compatible with iPhone 5 and above.
@@ -71,3 +67,7 @@ This will runs the app in the development mode. You can now scan the QR code pro
 - The entry point javascript file is [App.js](https://github.com/nehacp/finance-ios/blob/master/App.js) in the 'ios' folder.
 - All of the components are under [ios/components](https://github.com/nehacp/finance-ios/tree/master/ios/components).
 - The algorithm to calculate the change needed in the portfolio is [here](https://github.com/nehacp/finance-ios/blob/master/ios/calculate-portfolio-shift/index.js).
+
+#### Image
+
+![finance-ios](https://github.com/nehacp/finance-ios/blob/master/assets/finance-ios.png "Finance-IOS")
